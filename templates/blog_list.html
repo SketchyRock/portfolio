@@ -1,17 +1,16 @@
 {% extends "base.html" %}
+{% block title %}Writeups | Enzo Hins{% endblock %}
 
-{% block title %}Enzo Hins - Blog List{% endblock %}
-
-{% block hero %}
+{% block content %}
 <section>
-    <h2 class="section-title">Blog Posts:</h2>
-    <div class="blog-list">
+    <p class="prompt">$ ls writeups/</p>
+    <h1>Writeups</h1>
+    <p class="lede">Competition retrospectives: what I did, what went wrong, what I'm changing.</p>
+    <div class="rows">
         {% for post in posts %}
-        <div class="blog-item">
-            <a href="{{ url_for('blog_post', filename=post.filename) }}">
-                <h3>{{ post.title }}</h3>
-                <span>Read Blog →</span>
-            </a>
+        <div class="row">
+            <span class="when">{{ post.date }}</span>
+            <a href="{{ url_for('blog_post', filename=post.filename) }}"><strong>{{ post.title }}</strong></a>
         </div>
         {% endfor %}
     </div>

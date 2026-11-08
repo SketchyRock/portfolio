@@ -1,109 +1,98 @@
 {% extends "base.html" %}
+{% block title %}Enzo Hins | CS and Cybersecurity{% endblock %}
 
-{% block title %}Enzo Hins - Portfolio{% endblock %}
-
-{% block hero %}
-<section id="hero" class="hero-section">
-    <div class="hero-content">
-        <p class="eyebrow">Freshman @ James Madison University</p>
-        <h1 class="hero-title">Computer Science</h1>
-        <h1 class="hero-title">&</h1>
-        <h1 class="hero-title">Cyber Security</h1>
-        <p class="sub-headline">Software Development • Defensive Security • 3.9
-            GPA</p>
-    </div>
-
-    <div class="quote-block">
-        <blockquote>"The things that we love tell us what we are."</blockquote>
-        <cite>— St. Thomas Aquinas</cite>
-    </div>
-
-    <div class="cta-container">
-        <a href="#about-me" class="cta-button">
-            Learn More About Me <i data-lucide="chevron-down"></i>
-        </a>
-    </div>
+{% block content %}
+<section class="intro">
+    <p class="prompt">$ whoami</p>
+    <h1>{{ profile.name }}</h1>
+    <p class="lede">{{ profile.tagline }}</p>
+    <p class="meta">Sophomore at {{ profile.school }} · {{ profile.degree }} · GPA {{ profile.gpa }}</p>
+    <p class="links">
+        <a href="{{ profile.github }}" rel="noopener">github</a>
+        <a href="{{ profile.linkedin }}" rel="noopener">linkedin</a>
+        <a href="mailto:{{ profile.email }}">email</a>
+    </p>
 </section>
-{% endblock %}
 
-{% block about_me %}
-<section id="about-me">
-    <h2 class="section-title">About me</h2>
-
-    <div class="impact-statement">
-        <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;As a Computer Science student at James
-            Madison University maintaining a <strong>3.94
-                GPA</strong>,
-            I have earned <strong>President's List</strong> honors while
-            developing a specialized foundation in
-            <strong>Blue Team Defense</strong>.
-            My experience spans <strong>Palo Alto Firewall
-                administration</strong>, <strong>incident response</strong>,
-            and
-            <strong>algorithmic problem-solving</strong>, demonstrating a proven
-            ability to secure complex networks and
-            engineer efficient,
-            <strong>object-oriented software</strong>.
-        </p>
-    </div>
-
-    <div class="general-info">
-        <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;I am deeply committed to the competitive
-            security landscape, actively seeking out
-            every <strong>CTF</strong>
-            and <strong>Blue Team</strong>
-            competition to sharpen my skills in <strong>penetration
-                testing</strong> and <strong>remediation</strong>.
-            Beyond the technical execution, I document my progress through
-            <strong>technical retrospectives</strong> in
-            order to reflect
-            on my learning and growth.
-            My long-term goal is to support <strong>United States national
-                security</strong>,
-            protecting critical infrastructure through high-stakes cyber work in
-            either the <strong>public or private
-                sector</strong>.
-        </p>
-    </div>
-
-    <div class="button-container">
-        <a href="#projects" class="cta-button">
-            View my Projects <i data-lucide="chevron-down"></i>
-        </a>
-    </div>
+<section id="about">
+    <h2>about</h2>
+    {% for p in profile.about %}<p>{{ p }}</p>{% endfor %}
+    <blockquote>“{{ profile.quote.text }}”<cite>{{ profile.quote.by }}</cite></blockquote>
 </section>
-{% endblock %}
 
-{% block projects %}
-<section id="projects">
-    <h2 class="section-title">Technical Projects</h2>
-    <div class="projects-grid">
-        {% for project in projects %}
-        <a href="{{ project.repo }}" target="_blank" rel="noopener"
-            class="project-card">
+<section id="now">
+    <h2>now</h2>
+    <ul class="plain">
+        {% for item in profile.now %}<li>{{ item }}</li>{% endfor %}
+    </ul>
+</section>
 
-            <div class="card-header">
-                <img
-                    src="{{ url_for('static', filename='img/' + project.icon) }}"
-                    alt class="project-icon">
-                <h3>{{ project.name }}</h3>
+<section id="experience">
+    <h2>experience</h2>
+    {% for e in profile.experience %}
+    <div class="entry">
+        <div class="entry-head">
+            <span><strong>{{ e.role }}</strong>, {{ e.org }}</span>
+            <span class="when">{{ e.when }}</span>
+        </div>
+        <p>{{ e.text }}</p>
+    </div>
+    {% endfor %}
+</section>
+
+<section id="competitions">
+    <h2>competitions</h2>
+    <div class="rows">
+        {% for c in competitions %}
+        <div class="row">
+            <span class="when">{{ c.date }}</span>
+            <div>
+                <strong>{{ c.event }}</strong>
+                <span class="result">{{ c.result }}</span>
+                <p>{{ c.note }}
+                {% if c.post %}<a href="{{ url_for('blog_post', filename=c.post) }}">Read the retrospective</a>{% endif %}</p>
             </div>
-
-            <p class="project-desc">{{ project.description }}</p>
-
-            <div class="tag-container">
-                {% for tech in project.learned %}
-                <span class="tech-tag">{{ tech }}</span>
-                {% endfor %}
-            </div>
-
-            <span class="repo-cta">
-                View Repository <i data-lucide="github"></i>
-            </span>
-        </a>
+        </div>
         {% endfor %}
     </div>
+</section>
+
+<section id="projects">
+    <h2>projects</h2>
+    <div class="rows">
+        {% for p in projects %}
+        <div class="row">
+            <span class="when">{% if p.repo %}public{% else %}private{% endif %}</span>
+            <div>
+                {% if p.repo %}<a href="{{ p.repo }}" rel="noopener"><strong>{{ p.name }}</strong></a>{% else %}<strong>{{ p.name }}</strong>{% endif %}
+                <p>{{ p.description }}</p>
+                <p class="tags">{% for t in p.stack %}<span>{{ t }}</span>{% endfor %}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="writeups">
+    <h2>writeups</h2>
+    <p>After each competition I write down what happened, what broke and what changes next time.</p>
+    <ul class="plain">
+        {% for post in posts %}
+        <li><a href="{{ url_for('blog_post', filename=post.filename) }}">{{ post.title }}</a>{% if post.date %} <span class="when">{{ post.date }}</span>{% endif %}</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{{ url_for('blog') }}">All writeups</a></p>
+</section>
+
+<section id="skills">
+    <h2>skills</h2>
+    <dl class="skills">
+        {% for s in profile.skills %}<dt>{{ s.label }}</dt><dd>{{ s['items'] }}</dd>{% endfor %}
+    </dl>
+</section>
+
+<section id="contact">
+    <h2>contact</h2>
+    <p>I'm looking for Summer 2027 internships in cybersecurity and software engineering, and I'll relocate. The easiest way to reach me is <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>.</p>
 </section>
 {% endblock %}

@@ -1,56 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enzo Hins. CS and cybersecurity student at James Madison University: projects, competitions and writeups.">
+    <title>{% block title %}Enzo Hins{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>{% block title %}{% endblock %}</title>
 </head>
-
-<div id="top"></div>
-
-
 <body>
-    <main>
-        <header class="main-header">
-            <h1>Enzo Hins</h1>
+    <header class="site-header">
+        <div class="wrap bar">
+            <a class="brand" href="{{ url_for('home') }}">enzo<span>@</span>hins</a>
             <nav>
-                <ul>
-                    <li><a href="/#top">Home</a></li>
-                    <li><a href="/#about-me">About Me</a></li>
-                    <li><a href="/#projects">Projects</a></li>
-                    <li><a href="/blog">Blog</a></li>
-                </ul>
+                <a href="{{ url_for('home') }}#experience">experience</a>
+                <a href="{{ url_for('home') }}#competitions">competitions</a>
+                <a href="{{ url_for('home') }}#projects">projects</a>
+                <a href="{{ url_for('blog') }}">writeups</a>
+                <a href="{{ url_for('home') }}#contact">contact</a>
             </nav>
-        </header>
+        </div>
+    </header>
 
-        {% block hero %}{% endblock %}
-
-        {% block about_me %}{% endblock %}
-
-        {% block projects %}{% endblock %}
-
+    <main class="wrap">
+        {% block content %}{% endblock %}
     </main>
 
-
-
-    <footer class="fixed-footer">
-        <nav>
-            <ul>
-                <li><a href="https://github.com/SketchyRock" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ url_for('static', filename='img/github.svg') }}" alt="github" class="nav-icon">
-                        GitHub</a></li>
-                <li><a href="mailto:hinsem@dukes.jmu.edu" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ url_for('static', filename='img/envelope.svg') }}" alt="envelope" class="nav-icon">
-                        Email</a></li>
-                <li><a href="https://www.linkedin.com/in/enzohins/" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ url_for('static', filename='img/linkedin.svg') }}" alt="linkedin" class="nav-icon">
-                        LinkedIn</a></li>
-            </ul>
-        </nav>
+    <footer class="wrap site-footer">
+        <span>Enzo Hins, JMU class of 2029</span>
+        <span><a href="https://github.com/SketchyRock" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/enzohins/" rel="noopener">LinkedIn</a> · <a href="mailto:hinsem@dukes.jmu.edu">Email</a></span>
     </footer>
-
 </body>
-
 </html>

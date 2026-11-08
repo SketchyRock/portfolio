@@ -1,67 +1,11 @@
 [
-    {
-        "name": "Password Manager",
-        "description": "A lightweight terminal-based password manager for local credential storage using Java and Base64 encoding.",
-        "learned": [
-            "Java",
-            "CLI",
-            "File I/O",
-            "Base64 Encoding",
-            "OOP"
-        ],
-        "icon": "lock.svg",
-        "repo": "https://github.com/SketchyRock/password-manager"
-    },
-    {
-        "name": "Mp3 Player",
-        "description": " A minimalist Python music player that automatically streams MP3s from a local directory for a focused lofi experience.",
-        "learned": [
-            "Python",
-            "TUI",
-            "System Resource Management",
-            "OOP"
-        ],
-        "icon": "music-player.svg",
-        "repo": "https://github.com/SketchyRock/lofi-player"
-    },
-    {
-        "name": "Technical Writeups",
-        "description": "A centralized collection of technical resources, custom scripts, and performance retrospectives from my cyber defense and programming competitions.",
-        "learned": [
-            "Markdown",
-            "Technical Communication",
-            "Incident Response",
-            "OSINT",
-            "CTF",
-            "Blue Team",
-            "Scripting"
-        ],
-        "icon": "archive.svg",
-        "repo": "https://github.com/SketchyRock/writeups"
-    },
-    {
-        "name": "Scoundrel Game",
-        "description": "Scoundrel is a terminal-based Python implementation of the classic solo dungeon-crawling card game.",
-        "learned": [
-            "Python",
-            "TUI",
-            "Game Logic",
-            "OOP"
-        ],
-        "icon": "controller.svg",
-        "repo": "https://github.com/SketchyRock/scoundrel-game"
-    },
-    {
-        "name": "Portfolio Website",
-        "description": "A personal portfolio website built with Flask to showcase my projects and skills in cybersecurity and programming.",
-        "learned": [
-            "Flask",
-            "HTML",
-            "CSS",
-            "Jinja2 Templating",
-            "Web Development"
-        ],
-        "icon": "browser-chrome.svg",
-        "repo": "https://github.com/SketchyRock/portfolio-web"
-    }
+  {"name": "CTF orchestrator (VMI CyberFusion)", "description": "An AI agent loop that proposes a command, runs it in a throwaway Kali container, reads the output and tries again. Flask and Socket.IO backend, ephemeral Docker containers. It solved the VMI challenges well inside the time limit.", "stack": ["Python", "Flask", "Docker", "LLM agents"], "status": "private"},
+  {"name": "HGN-Sense security", "description": "Encryption, model protection and anti-spoofing for an ML system that detects impairment from eye movements.", "stack": ["AES-256-GCM", "Python", "ML security"], "status": "private"},
+  {"name": "Gvoid", "description": "A minimalist deep work station with a Pomodoro timer and ambient soundscapes.", "stack": ["React", "Vite", "Tailwind"], "repo": "https://github.com/SketchyRock/Gvoid"},
+  {"name": "writeups", "description": "Competition retrospectives, scripts and hardening checklists.", "stack": ["Markdown", "Incident response", "Scripting"], "repo": "https://github.com/SketchyRock/writeups"},
+  {"name": "Barber booking site", "description": "A booking site for a friend's barber business. He used it for a while before moving to another tool.", "stack": ["React 19", "Vite", "Tailwind v4", "Framer Motion"], "status": "private"},
+  {"name": "Password manager", "description": "A terminal password manager that stores credentials locally.", "stack": ["Java", "CLI", "Base64"], "repo": "https://github.com/SketchyRock/password-manager"},
+  {"name": "MP3 player", "description": "A small Python terminal player that streams a local folder of MP3s for lofi sessions.", "stack": ["Python", "TUI"], "repo": "https://github.com/SketchyRock/mp3-player"},
+  {"name": "Scoundrel", "description": "The solo dungeon-crawling card game, in the terminal.", "stack": ["Python", "TUI", "Game logic"], "repo": "https://github.com/SketchyRock/scoundrel-game"},
+  {"name": "This site", "description": "Flask, Jinja and one stylesheet. Writeups are plain Markdown files.", "stack": ["Flask", "Jinja2", "CSS"], "repo": "https://github.com/SketchyRock/portfolio-web"}
 ]

@@ -1,0 +1,59 @@
+{
+  "name": "Enzo Hins",
+  "handle": "SketchyRock",
+  "tagline": "I break things to learn how to defend them, and I build things because I like building.",
+  "school": "James Madison University",
+  "degree": "B.S. Computer Science, cybersecurity focus. Minors in Mathematics and Russian. May 2029.",
+  "gpa": "3.97",
+  "email": "hinsem@dukes.jmu.edu",
+  "github": "https://github.com/SketchyRock",
+  "linkedin": "https://www.linkedin.com/in/enzohins/",
+  "about": [
+    "I'm a sophomore at JMU studying computer science. I started on the defense side, running a Palo Alto firewall at MACCDC, and I keep getting pulled toward offense. Right now I lean red team, but I'm just as happy shipping a product.",
+    "I learn by entering competitions and writing down what went wrong afterward. The retrospectives under Writeups are the honest version, including the Splunk box we forgot to own.",
+    "Long term I want to do cyber work for national security, in defense or intelligence. Off the keyboard I train Brazilian jiu-jitsu, study Russian, and care about getting things right more than getting them fast."
+  ],
+  "quote": {
+    "text": "The things that we love tell us what we are.",
+    "by": "St. Thomas Aquinas"
+  },
+  "now": [
+    "Researching security for HGN-Sense at the Commonwealth Cyber Initiative",
+    "Leading infrastructure for the JMU Cyber Defense Club and running the Competitive Programming Club",
+    "Working through a 12-week C++ and reverse engineering plan (hexdump, PE/ELF parsing, Ghidra, pwn.college)",
+    "Studying for Security+ over winter break"
+  ],
+  "experience": [
+    {
+      "role": "Cybersecurity Researcher",
+      "org": "Commonwealth Cyber Initiative, HGN-Sense",
+      "when": "May 2026 to now",
+      "text": "HGN-Sense uses ML to spot Horizontal Gaze Nystagmus eye movements and flag impairment for public safety. I'm the security person: AES-256-GCM encryption of subjects' biometric data, protection for the model weights, and anti-spoofing so the system can't be tricked."
+    },
+    {
+      "role": "Software Engineering Intern",
+      "org": "Smart Wish",
+      "when": "Apr 2026 to summer 2026",
+      "text": "Shipped AI search results and AI sticker and text generation to production on a greeting card platform, and researched local AI hosting."
+    },
+    {
+      "role": "President",
+      "org": "JMU Competitive Programming Club",
+      "when": "Fall 2026 to now",
+      "text": "Running a club of about 10 people."
+    },
+    {
+      "role": "Infrastructure Lead, Executive Board",
+      "org": "JMU Cyber Defense Club",
+      "when": "Current",
+      "text": "Working with the university on cost-effective lab infrastructure for a club of about 25 members."
+    }
+  ],
+  "skills": [
+    {"label": "Languages", "items": "Python, Java, JavaScript/TypeScript, Bash, HTML/CSS, C++ (learning)"},
+    {"label": "Web", "items": "Flask, React, Node, Tailwind"},
+    {"label": "Security", "items": "Nmap, Metasploit, Wireshark, Burp Suite, Palo Alto firewalls, iptables"},
+    {"label": "Infra", "items": "Linux (Kali, Ubuntu, Arch), Docker, Proxmox, VMware, VirtualBox, Git, REST APIs, LLM agents"},
+    {"label": "Human languages", "items": "English, Russian, a little Chinese and German"}
+  ]
+}
