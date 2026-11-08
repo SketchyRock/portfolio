@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Projects | Enzo Hins{% endblock %}
+{% block content %}
+<section class="page-head">
+    <p class="prompt">$ ls projects/</p>
+    <h1>Projects</h1>
+    <p class="lede">Things I built. Private ones are described but not linked.</p>
+</section>
+<section id="projects">
+    <div class="rows">
+        {% for p in projects %}
+        <div class="row">
+            <span class="when">{% if p.repo %}public{% else %}private{% endif %}</span>
+            <div>
+                {% if p.repo %}<a href="{{ p.repo }}" rel="noopener"><strong>{{ p.name }}</strong></a>{% else %}<strong>{{ p.name }}</strong>{% endif %}
+                <p>{{ p.description }}</p>
+                <p class="tags">{% for t in p.stack %}<span>{{ t }}</span>{% endfor %}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

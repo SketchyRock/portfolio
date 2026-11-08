@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}About | Enzo Hins{% endblock %}
+{% block content %}
+<section class="page-head">
+    <p class="prompt">$ cat about.txt</p>
+    <h1>About</h1>
+    <p class="lede">Who I am, what I do, and what I know.</p>
+</section>
+<section id="about">
+    {% for p in profile.about %}<p>{{ p }}</p>{% endfor %}
+    <blockquote>“{{ profile.quote.text }}”<cite>{{ profile.quote.by }}</cite></blockquote>
+</section>
+<section id="experience">
+    <h2>experience</h2>
+    {% for e in profile.experience %}
+    <div class="entry">
+        <div class="entry-head">
+            <span><strong>{{ e.role }}</strong>, {{ e.org }}</span>
+            <span class="when">{{ e.when }}</span>
+        </div>
+        <p>{{ e.text }}</p>
+    </div>
+    {% endfor %}
+</section>
+<section id="skills">
+    <h2>skills</h2>
+    <dl class="skills">
+        {% for s in profile.skills %}<dt>{{ s.label }}</dt><dd>{{ s['items'] }}</dd>{% endfor %}
+    </dl>
+</section>
+{% endblock %}

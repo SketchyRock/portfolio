@@ -12,11 +12,11 @@
         <div class="wrap bar">
             <a class="brand" href="{{ url_for('home') }}">enzo<span>@</span>hins</a>
             <nav>
-                <a href="{{ url_for('home') }}#experience">experience</a>
-                <a href="{{ url_for('home') }}#competitions">competitions</a>
-                <a href="{{ url_for('home') }}#projects">projects</a>
-                <a href="{{ url_for('blog') }}">writeups</a>
-                <a href="{{ url_for('home') }}#contact">contact</a>
+                {% set ep = request.endpoint %}
+                <a href="{{ url_for('about') }}" {% if ep == 'about' %}class="active"{% endif %}>about</a>
+                <a href="{{ url_for('competitions') }}" {% if ep == 'competitions' %}class="active"{% endif %}>competitions</a>
+                <a href="{{ url_for('projects') }}" {% if ep == 'projects' %}class="active"{% endif %}>projects</a>
+                <a href="{{ url_for('blog') }}" {% if ep in ('blog','blog_post') %}class="active"{% endif %}>writeups</a>
             </nav>
         </div>
     </header>
@@ -27,7 +27,7 @@
 
     <footer class="wrap site-footer">
         <span>Enzo Hins, JMU class of 2029</span>
-        <span><a href="https://github.com/SketchyRock" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/enzohins/" rel="noopener">LinkedIn</a> · <a href="mailto:hinsem@dukes.jmu.edu">Email</a></span>
+        <span><a href="mailto:hinsem@dukes.jmu.edu">Contact</a> · <a href="https://github.com/SketchyRock" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/enzohins/" rel="noopener">LinkedIn</a> · <a href="mailto:hinsem@dukes.jmu.edu">Email</a></span>
     </footer>
 </body>
 </html>

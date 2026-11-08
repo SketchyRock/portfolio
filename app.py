@@ -41,10 +41,25 @@ def home():
     return render_template(
         "index.html",
         profile=load("profile.json"),
-        projects=load("projects.json"),
         competitions=load("competitions.json"),
+        projects=load("projects.json"),
         posts=all_posts(),
     )
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html", profile=load("profile.json"))
+
+
+@app.route("/competitions")
+def competitions():
+    return render_template("competitions.html", competitions=load("competitions.json"))
+
+
+@app.route("/projects")
+def projects():
+    return render_template("projects.html", projects=load("projects.json"))
 
 
 @app.route("/blog")

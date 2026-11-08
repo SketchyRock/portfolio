@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Competitions | Enzo Hins{% endblock %}
+{% block content %}
+<section class="page-head">
+    <p class="prompt">$ ls competitions/</p>
+    <h1>Competitions</h1>
+    <p class="lede">Results and what I took from each one.</p>
+</section>
+<section id="competitions">
+    <div class="rows">
+        {% for c in competitions %}
+        <div class="row">
+            <span class="when">{{ c.date }}</span>
+            <div>
+                <strong>{{ c.event }}</strong>
+                <span class="result">{{ c.result }}</span>
+                <p>{{ c.note }}
+                {% if c.post %}<a href="{{ url_for('blog_post', filename=c.post) }}">Read the retrospective</a>{% endif %}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

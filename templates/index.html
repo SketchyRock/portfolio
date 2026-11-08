@@ -14,12 +14,6 @@
     </p>
 </section>
 
-<section id="about">
-    <h2>about</h2>
-    {% for p in profile.about %}<p>{{ p }}</p>{% endfor %}
-    <blockquote>“{{ profile.quote.text }}”<cite>{{ profile.quote.by }}</cite></blockquote>
-</section>
-
 <section id="now">
     <h2>now</h2>
     <ul class="plain">
@@ -27,68 +21,14 @@
     </ul>
 </section>
 
-<section id="experience">
-    <h2>experience</h2>
-    {% for e in profile.experience %}
-    <div class="entry">
-        <div class="entry-head">
-            <span><strong>{{ e.role }}</strong>, {{ e.org }}</span>
-            <span class="when">{{ e.when }}</span>
-        </div>
-        <p>{{ e.text }}</p>
-    </div>
-    {% endfor %}
-</section>
-
-<section id="competitions">
-    <h2>competitions</h2>
+<section id="explore">
+    <h2>explore</h2>
     <div class="rows">
-        {% for c in competitions %}
-        <div class="row">
-            <span class="when">{{ c.date }}</span>
-            <div>
-                <strong>{{ c.event }}</strong>
-                <span class="result">{{ c.result }}</span>
-                <p>{{ c.note }}
-                {% if c.post %}<a href="{{ url_for('blog_post', filename=c.post) }}">Read the retrospective</a>{% endif %}</p>
-            </div>
-        </div>
-        {% endfor %}
+        <div class="row"><a href="{{ url_for('about') }}"><strong>about</strong></a><p>Background, experience and skills.</p></div>
+        <div class="row"><a href="{{ url_for('competitions') }}"><strong>competitions</strong></a><p>{{ competitions|length }} events, from ICPC to MACCDC to CTFs.</p></div>
+        <div class="row"><a href="{{ url_for('projects') }}"><strong>projects</strong></a><p>{{ projects|length }} projects, public and private.</p></div>
+        <div class="row"><a href="{{ url_for('blog') }}"><strong>writeups</strong></a><p>{{ posts|length }} competition retrospectives.</p></div>
     </div>
-</section>
-
-<section id="projects">
-    <h2>projects</h2>
-    <div class="rows">
-        {% for p in projects %}
-        <div class="row">
-            <span class="when">{% if p.repo %}public{% else %}private{% endif %}</span>
-            <div>
-                {% if p.repo %}<a href="{{ p.repo }}" rel="noopener"><strong>{{ p.name }}</strong></a>{% else %}<strong>{{ p.name }}</strong>{% endif %}
-                <p>{{ p.description }}</p>
-                <p class="tags">{% for t in p.stack %}<span>{{ t }}</span>{% endfor %}</p>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-
-<section id="writeups">
-    <h2>writeups</h2>
-    <p>After each competition I write down what happened, what broke and what changes next time.</p>
-    <ul class="plain">
-        {% for post in posts %}
-        <li><a href="{{ url_for('blog_post', filename=post.filename) }}">{{ post.title }}</a>{% if post.date %} <span class="when">{{ post.date }}</span>{% endif %}</li>
-        {% endfor %}
-    </ul>
-    <p><a href="{{ url_for('blog') }}">All writeups</a></p>
-</section>
-
-<section id="skills">
-    <h2>skills</h2>
-    <dl class="skills">
-        {% for s in profile.skills %}<dt>{{ s.label }}</dt><dd>{{ s['items'] }}</dd>{% endfor %}
-    </dl>
 </section>
 
 <section id="contact">
