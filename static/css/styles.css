@@ -1,9 +1,9 @@
 :root {
     --bg: #fbfaf8;
     --text: #1d1d1b;
-    --muted: #6b6a66;
+    --muted: #5f5e5a;
     --line: #e4e1db;
-    --accent: #c76f00;
+    --accent: #a85a00;
     --code-bg: #f1eee8;
     --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
     --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -13,9 +13,9 @@
     :root {
         --bg: #141413;
         --text: #e9e7e2;
-        --muted: #9a978f;
+        --muted: #a8a59d;
         --line: #2c2b28;
-        --accent: #f39200;
+        --accent: #ffb02e;
         --code-bg: #1f1e1c;
     }
 }
@@ -37,7 +37,7 @@ a { color: var(--accent); text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
 p { margin: 0 0 1rem; overflow-wrap: anywhere; }
 
-.wrap { max-width: 740px; margin: 0 auto; padding: 0 1.25rem; }
+.wrap { max-width: 640px; margin: 0 auto; padding: 0 1.25rem; }
 
 /* header */
 .site-header {
@@ -118,3 +118,28 @@ nav a.active { color: var(--accent); }
 .page-head + section { border-top: 1px solid var(--line); }
 #explore .row { grid-template-columns: 9rem 1fr; }
 #explore .row p { margin: 0; }
+
+/* centered, focused layout */
+.bar { justify-content: center; flex-direction: column; gap: .4rem; }
+nav { justify-content: center; }
+.intro, .page-head { text-align: center; }
+.lede { margin-left: auto; margin-right: auto; }
+.links { justify-content: center; }
+h2 { text-align: center; }
+h2::before { content: none; }
+section { text-align: left; }
+#now, #explore, #contact { text-align: center; }
+#now ul.plain li { padding-left: 0; }
+#now ul.plain li::before { content: none; }
+#now ul.plain li + li { margin-top: .6rem; }
+#explore .row { grid-template-columns: 1fr; gap: 0; }
+#explore .row p { margin-top: .1rem; }
+.row { grid-template-columns: 1fr; gap: .1rem; }
+.row .when { padding-top: 0; }
+.entry-head .when { margin-left: 0; width: 100%; }
+.skills { grid-template-columns: 1fr; gap: 0; }
+.skills dd { margin-bottom: .8rem; }
+.site-footer { justify-content: center; text-align: center; flex-direction: column; }
+.back { text-align: center; }
+.prose h1 { text-align: center; }
+.page-head { border-top: 0; }
