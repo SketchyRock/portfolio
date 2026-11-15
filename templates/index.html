@@ -4,36 +4,37 @@
 
 {% block content %}
 <section class="intro">
+    <img class="portrait" src="{{ url_for('static', filename='img/portrait.webp') }}" width="273" height="341" alt="Enzo Hins">
     <h1>{{ profile.name }}</h1>
+    <dl class="kv">
+        <div><dt>school</dt><dd>{{ profile.school }}</dd></div>
+        <div><dt>degree</dt><dd>{{ profile.degree.rstrip('.') }}</dd></div>
+        <div><dt>gpa</dt><dd>{{ profile.gpa }}</dd></div>
+        <div><dt>links</dt><dd class="links"><a href="{{ profile.github }}" rel="noopener">github</a><a href="{{ profile.linkedin }}" rel="noopener">linkedin</a><a href="mailto:{{ profile.email }}">email</a></dd></div>
+    </dl>
     <p class="lede">{{ profile.tagline }}</p>
     <p>{{ profile.intro }}</p>
-    <p class="meta">{{ profile.degree.rstrip('.') }} · GPA {{ profile.gpa }}</p>
-    <p class="links">
-        <a href="{{ profile.github }}" rel="noopener">GitHub</a>
-        <a href="{{ profile.linkedin }}" rel="noopener">LinkedIn</a>
-        <a href="mailto:{{ profile.email }}">Email</a>
-    </p>
 </section>
 
 <section aria-labelledby="now-h">
-    <h2 id="now-h">Now</h2>
-    <ul class="plain">
+    <h2 id="now-h" class="sec"><span class="num" aria-hidden="true">01</span><span>now</span></h2>
+    <ul class="plain in">
         {% for item in profile.now %}<li>{{ item }}</li>{% endfor %}
     </ul>
 </section>
 
 <section aria-labelledby="explore-h">
-    <h2 id="explore-h">Explore</h2>
-    <ul class="rows">
-        <li class="row"><a href="{{ url_for('about') }}">About</a><span class="label">background and skills</span></li>
-        <li class="row"><a href="{{ url_for('competitions') }}">Competitions</a><span class="label">{{ competitions|length }} events</span></li>
-        <li class="row"><a href="{{ url_for('projects') }}">Projects</a><span class="label">{{ projects|length }} listed</span></li>
-        {% if has_photos %}<li class="row"><a href="{{ url_for('photos') }}">Photos</a><span class="label">albums</span></li>{% endif %}
+    <h2 id="explore-h" class="sec"><span class="num" aria-hidden="true">02</span><span>explore</span></h2>
+    <ul class="rows in">
+        <li class="row inline"><a href="{{ url_for('about') }}">About</a><span class="label">background and skills</span></li>
+        <li class="row inline"><a href="{{ url_for('competitions') }}">Competitions</a><span class="label">{{ competitions|length }} events</span></li>
+        <li class="row inline"><a href="{{ url_for('projects') }}">Projects</a><span class="label">{{ projects|length }} listed</span></li>
+        {% if has_photos %}<li class="row inline"><a href="{{ url_for('photos') }}">Photos</a><span class="label">albums</span></li>{% endif %}
     </ul>
 </section>
 
 <section aria-labelledby="contact-h">
-    <h2 id="contact-h">Contact</h2>
-    <p>I'm looking for Summer 2027 internships in cybersecurity and software engineering, and I'll relocate. The easiest way to reach me is <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>.</p>
+    <h2 id="contact-h" class="sec"><span class="num" aria-hidden="true">03</span><span>contact</span></h2>
+    <p class="in">I'm looking for Summer 2027 internships in cybersecurity and software engineering, and I'll relocate. The easiest way to reach me is <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>.</p>
 </section>
 {% endblock %}

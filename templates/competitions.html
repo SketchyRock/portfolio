@@ -7,14 +7,15 @@
     <p class="lede">I enter around ten events a year, in three kinds: blue team, CTF and red team, and programming. Newest first. Click an event to read my write-up of it.</p>
 </header>
 <section aria-label="Events">
+    <h2 class="sec" aria-hidden="true"><span class="num">date</span><span>event</span></h2>
     <ol class="rows">
         {% for c in competitions %}
-        <li class="row split">
-            <span class="label">{{ c.date }}</span>
+        <li class="row g">
+            <span class="label gl">{{ c.date }}</span>
             <div>
                 <p class="title"><strong>{% if c.post %}<a href="{{ url_for('competition_post', slug=c.post) }}">{{ c.event }}</a>{% else %}{{ c.event }}{% endif %}</strong> {% if c.result %}<span class="result">{{ c.result }}</span>{% endif %}</p>
                 {% if c.note %}<p class="note">{{ c.note }}</p>{% endif %}
-                {% if c.type or c.also %}<p class="sub">{% if c.type %}<span class="label">{{ {'blue': 'blue team', 'ctf': 'ctf', 'programming': 'programming'}.get(c.type, c.type) }}</span>{% endif %}{% for a in c.also %} <a href="{{ url_for('competition_post', slug=a.slug) }}">{{ a.title }}</a>{% endfor %}</p>{% endif %}
+                {% if c.type or c.also %}<p class="sub">{% if c.type %}<span class="label">{{ {'blue': 'blue team', 'ctf': 'ctf', 'programming': 'programming'}.get(c.type, c.type) }}</span>{% endif %}{% for a in c.also %}<a href="{{ url_for('competition_post', slug=a.slug) }}">{{ a.title }}</a>{% endfor %}</p>{% endif %}
             </div>
         </li>
         {% endfor %}

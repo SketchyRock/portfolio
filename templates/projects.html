@@ -7,18 +7,21 @@
     <p class="lede">Public repos come straight from GitHub. Private work is described, not linked.</p>
 </header>
 <section aria-label="Projects">
+    <h2 class="sec" aria-hidden="true"><span class="num">updated</span><span>project</span></h2>
     <ul class="rows">
         {% for p in projects %}
-        <li class="row stack">
-            <div class="row-head">
-                <h2 class="item">{% if p.repo %}<a href="{{ p.repo }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</h2>
-                <span class="label">{{ p.status }}</span>
+        <li class="row g">
+            <span class="label gl">{{ p.updated or '' }}</span>
+            <div>
+                <div class="row-head">
+                    <h2 class="item">{% if p.repo %}<a href="{{ p.repo }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</h2>
+                    <span class="label">{{ p.status }}</span>
+                </div>
+                <p>{{ p.description }}</p>
+                {% set lang = p.language if p.language and p.language not in p.stack else None %}
+                {% set tags = p.stack + ([lang] if lang else []) %}
+                {% if tags %}<p class="quiet">{{ tags|join(' / ') }}</p>{% endif %}
             </div>
-            <p>{{ p.description }}</p>
-            {% set lang = p.language if p.language and p.language not in p.stack else None %}
-            {% if p.stack or lang or p.updated %}
-            <p class="quiet">{{ p.stack|join(' · ') }}{% if lang or p.updated %}{% if p.stack %}<br>{% endif %}{{ [lang, p.updated]|select|join(' · ') }}{% endif %}</p>
-            {% endif %}
         </li>
         {% endfor %}
     </ul>
