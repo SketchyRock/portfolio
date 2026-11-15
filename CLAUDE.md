@@ -6,4 +6,4 @@ Each write-up is a competition: they render at `/competitions/<slug>` and the Co
 
 Docs and research: `~/Documents/Obsidian Vault/Claude/Projects/portfolio/`. Do not add docs to this repo.
 
-Status: live; write-ups merged into Competitions (2026-11-15, PR #6); UI restyle, copy rewrite and GitHub-only Competitions and Projects merged (2026-11-15, PR #8). Work from `main`; `redesign`, `auto-refresh`, `competition-name-links` and `merge-writeups-into-competitions` and `ui-refresh` are merged leftovers (PRs #3 to #8). Start with `Status.md` in the vault folder.
+Status: live; write-ups merged into Competitions (2026-11-15, PR #6); UI restyle, copy rewrite and GitHub-only Competitions and Projects merged (2026-11-15, PR #8). Work from `main`; `redesign`, `auto-refresh`, `competition-name-links`, `merge-writeups-into-competitions` and `ui-refresh` are merged leftovers (PRs #3 to #8). Start with `Status.md` in the vault folder.
