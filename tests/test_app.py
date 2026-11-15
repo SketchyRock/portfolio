@@ -51,18 +51,19 @@ def test_competitions_page_lists_names_only(cache):
     assert '<strong class="count">1</strong> event across capture the flag' in html
 
 
-def test_project_list_public_repos_newest_first(cache):
+def test_project_list_sorted_by_name(cache):
     repos = [
-        {"name": "older", "html_url": "https://github.com/SketchyRock/older", "description": None,
-         "pushed_at": "2025-01-01T00:00:00Z"},
-        {"name": "newer", "html_url": "https://github.com/SketchyRock/newer", "description": "new",
+        {"name": "zeta", "html_url": "https://github.com/SketchyRock/zeta", "description": None,
          "pushed_at": "2026-05-01T00:00:00Z"},
+        {"name": "Gvoid", "html_url": "https://github.com/SketchyRock/Gvoid", "description": "g",
+         "pushed_at": "2025-01-01T00:00:00Z"},
+        {"name": "echoes", "html_url": "https://github.com/SketchyRock/echoes", "description": "e",
+         "pushed_at": "2024-01-01T00:00:00Z"},
     ]
     cache([], repos)
-    assert appmod.project_list() == [
-        {"name": "newer", "description": "new", "repo": "https://github.com/SketchyRock/newer"},
-        {"name": "older", "description": "", "repo": "https://github.com/SketchyRock/older"},
-    ]
+    ps = appmod.project_list()
+    assert [p["name"] for p in ps] == ["echoes", "Gvoid", "zeta"]
+    assert ps[2] == {"name": "zeta", "description": "", "repo": "https://github.com/SketchyRock/zeta"}
 
 
 def test_empty_lists_render(cache):

@@ -94,8 +94,8 @@ def competition_list():
 
 
 def project_list():
-    """Public repos from the GitHub cache, most recently pushed first."""
-    repos = sorted(cached("repos.json"), key=lambda r: r.get("pushed_at") or "", reverse=True)
+    """Public repos from the GitHub cache, A to Z by name (case-insensitive) so the order is stable."""
+    repos = sorted(cached("repos.json"), key=lambda r: r["name"].lower())
     return [{"name": r["name"], "description": r.get("description") or "", "repo": r["html_url"]} for r in repos]
 
 
