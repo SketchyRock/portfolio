@@ -21,9 +21,18 @@
     "by": "St. Thomas Aquinas"
   },
   "now": [
-    "Security research for HGN-Sense at the Commonwealth Cyber Initiative",
-    "Executive, Cyber Defense Club at JMU",
-    "President, Competitive Programming Club at JMU"
+    {
+      "text": "Security research for HGN-Sense at Virginia's Commonwealth Cyber Initiative",
+      "when": "May 2026 – present"
+    },
+    {
+      "text": "Executive, Cyber Defense Club at JMU",
+      "when": "August 2025 – present"
+    },
+    {
+      "text": "President, Competitive Programming Club at JMU",
+      "when": "August 2025 – present"
+    }
   ],
   "experience": [
     {

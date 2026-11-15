@@ -143,6 +143,11 @@ section { margin-top: 3rem; }
 .row p { margin-bottom: 0.25rem; }
 .inline { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
 .inline .label { white-space: nowrap; }
+.dated .label { display: block; }
+@media (min-width: 40rem) {
+  .dated { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .dated .label { white-space: nowrap; }
+}
 .row-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.25rem; }
 .row-head .label { white-space: nowrap; }
 .title strong { color: var(--strong); }

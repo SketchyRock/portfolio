@@ -18,8 +18,8 @@
 
 <section aria-labelledby="now-h">
     <h2 id="now-h" class="sec"><span class="num" aria-hidden="true">01</span><span>now</span></h2>
-    <ul class="plain in">
-        {% for item in profile.now %}<li>{{ item }}</li>{% endfor %}
+    <ul class="rows in">
+        {% for item in profile.now %}<li class="row dated"><span>{{ item.text }}</span><span class="label">{{ item.when }}</span></li>{% endfor %}
     </ul>
 </section>
 
