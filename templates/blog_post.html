@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | Enzo Hins{% endblock %}
+{% block description %}{{ title }}. A competition retrospective by Enzo Hins{% if post.event %} on {{ post.event }}{% endif %}.{% endblock %}
+{% block content %}
+<p class="back"><a href="{{ url_for('blog') }}">← All writeups</a></p>
+<article class="prose">
+    {% if post.date %}<p class="label">{{ post.date }}</p>{% endif %}
+    {{ content|safe }}
+</article>
+<p class="back"><a href="{{ post.source_url }}" rel="noopener">View source on GitHub</a></p>
+{% endblock %}

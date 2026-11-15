@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Competitions | Enzo Hins{% endblock %}
+{% block description %}Competition results and retrospectives: blue team, CTF and red team, and programming contests.{% endblock %}
+{% block content %}
+<header class="page-head">
+    <h1>Competitions</h1>
+    <p class="lede">I enter around ten events a year, in three kinds: blue team, CTF and red team, and programming. Newest first, with a retrospective where I wrote one.</p>
+</header>
+<section aria-label="Events">
+    <ol class="rows">
+        {% for c in competitions %}
+        <li class="row split">
+            <span class="label">{{ c.date }}</span>
+            <div>
+                <p class="title"><strong>{{ c.event }}</strong> <span class="result">{{ c.result }}</span></p>
+                <p class="note">{{ c.note }}</p>
+                <p class="sub"><span class="label">{{ {'blue': 'blue team', 'ctf': 'ctf', 'programming': 'programming'}.get(c.type, c.type) }}</span>{% if c.post %} <a href="{{ url_for('blog_post', slug=c.post) }}">Read the retrospective</a>{% endif %}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+</section>
+{% endblock %}

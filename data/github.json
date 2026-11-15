@@ -1,0 +1,6 @@
+{
+  "user": "SketchyRock",
+  "writeups_repo": "writeups",
+  "include": ["**/*retrospective*.md", "**/*overview*.md"],
+  "hide_repos": ["SketchyRock"]
+}

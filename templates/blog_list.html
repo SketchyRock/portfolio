@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Writeups | Enzo Hins{% endblock %}
+{% block description %}Competition retrospectives by Enzo Hins: what I did, what went wrong, what I'm changing.{% endblock %}
+{% block content %}
+<header class="page-head">
+    <h1>Writeups</h1>
+    <p class="lede">Competition retrospectives: what I did, what went wrong, what I'm changing.</p>
+</header>
+<section aria-label="Writeups">
+    {% if posts %}
+    <ul class="rows">
+        {% for post in posts %}
+        <li class="row split">
+            <span class="label">{{ post.date }}</span>
+            <div>
+                <p class="title"><a href="{{ url_for('blog_post', slug=post.slug) }}">{{ post.title }}</a></p>
+                {% if post.event %}<p class="quiet">{{ post.event }}</p>{% endif %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Nothing here yet. I write these after each event, so check back after the next one.</p>
+    {% endif %}
+</section>
+{% endblock %}

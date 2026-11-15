@@ -1,0 +1,5 @@
+-r requirements.txt
+Pillow
+pytest
+# optional, for .heic originals
+pillow-heif

@@ -217,3 +217,7 @@ __marimo__/
 .DS_Store
 .DS_Store
 static/css/2styles.css
+dist/
+
+# Original photos (only the resized WebP output in static/photos is committed)
+photos/
