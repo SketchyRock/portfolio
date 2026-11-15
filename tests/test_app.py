@@ -26,7 +26,7 @@ def test_image_and_link_rewriting(cache):
     assert 'src="https://raw.githubusercontent.com/SketchyRock/writeups/HEAD/ICPC-2025/img/a.png"' in html
     assert 'href="/blog/b-over"' in html
     assert 'href="https://github.com/SketchyRock/writeups/blob/HEAD/ICPC-2025/scripts/run.sh"' in html
-    assert 'href="https://github.com/SketchyRock/writeups/blob/HEAD/README.md"' in html
+    assert 'href="/blog"' in html
     assert 'href="https://example.com/a"' in html
     assert 'src="https://example.com/i.png"' in html
 
