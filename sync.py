@@ -77,7 +77,7 @@ def clean_repos(raw, hide):
     hide = {h.lower() for h in hide}
     out = []
     for r in raw:
-        if r.get("fork") or r["name"].lower() in hide:
+        if r.get("fork") or r.get("private") or r["name"].lower() in hide:
             continue
         out.append({
             "name": r["name"],
@@ -203,29 +203,18 @@ def parse_iso_date(raw):
     return f"{MONTHS[dt.month - 1]} {dt.year}", dt.isoformat()
 
 
-def parse_month_year(s):
-    """'Jan 2026' -> '2026-01-01', else ''."""
-    m = re.match(r"([A-Za-z]{3})[a-z]*\.?\s+(\d{4})$", (s or "").strip())
-    if m and m.group(1).title() in MONTHS:
-        return f"{m.group(2)}-{MONTHS.index(m.group(1).title()) + 1:02d}-01"
-    return ""
-
-
-def build_writeup(path, slug, text, competitions):
+def build_writeup(path, slug, text):
     meta, text = split_front_matter(text)
     raw, display, key = parse_date(text)
     if not key and meta.get("date"):
         raw = meta["date"]
         display, key = parse_iso_date(raw)
-    if not key:
-        for c in competitions:
-            if c.get("post") == slug and c.get("date"):
-                display, key = c["date"], parse_month_year(c["date"])
-                break
     parent = os.path.dirname(path)
     return {
         "slug": slug,
         "path": path,
+        "type": meta.get("type", ""),
+        "category": meta.get("category", ""),
         "title": get_title(text, path) if not meta.get("title") else meta["title"],
         "date_raw": raw,
         "date": display,
@@ -236,7 +225,7 @@ def build_writeup(path, slug, text, competitions):
     }
 
 
-def build_writeups(tree, fetch_text, include, competitions, types=None):
+def build_writeups(tree, fetch_text, include, types=None):
     paths = sorted(t["path"] for t in tree
                    if t.get("type") == "blob" and is_allowed(t["path"], include))
     texts = {}
@@ -248,7 +237,7 @@ def build_writeups(tree, fetch_text, include, competitions, types=None):
             continue
         texts[p] = text
     slugs = assign_slugs(list(texts))
-    return [build_writeup(p, slugs[p], texts[p], competitions) for p in texts]
+    return [build_writeup(p, slugs[p], texts[p]) for p in texts]
 
 
 def sync_writeups():
@@ -257,14 +246,12 @@ def sync_writeups():
     tree = fetch_json(f"https://api.github.com/repos/{repo}/git/trees/HEAD?recursive=1")
     if tree.get("truncated"):
         raise SyncError("writeups tree was truncated")
-    with open(os.path.join(DATA, "competitions.json"), encoding="UTF-8") as f:
-        comps = json.load(f)
 
     def fetch_text(path):
         quoted = urllib.request.quote(path)
         return fetch(f"https://raw.githubusercontent.com/{repo}/HEAD/{quoted}").decode("utf-8")
 
-    posts = build_writeups(tree.get("tree", []), fetch_text, cfg["include"], comps, cfg["types"])
+    posts = build_writeups(tree.get("tree", []), fetch_text, cfg["include"], cfg["types"])
     if not posts and read_cache("writeups.json"):
         raise SyncError("no writeups matched; refusing to replace a non-empty cache")
     write_cache("writeups.json", posts)

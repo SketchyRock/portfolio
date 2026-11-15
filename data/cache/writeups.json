@@ -2,6 +2,8 @@
  {
   "slug": "icpc",
   "path": "2025/icpc.md",
+  "type": "retrospective",
+  "category": "competitive-programming",
   "title": "ICPC 2025",
   "date_raw": "2025-11-08",
   "date": "Nov 2025",
@@ -13,6 +15,8 @@
  {
   "slug": "echoes-makeathon",
   "path": "2026/echoes-makeathon.md",
+  "type": "retrospective",
+  "category": "makeathon",
   "title": "JMU Makeathon, Fall 2026",
   "date_raw": "2026-11-13",
   "date": "Nov 2026",
@@ -24,6 +28,8 @@
  {
   "slug": "jmu-blue-team-mock",
   "path": "2026/jmu-blue-team-mock.md",
+  "type": "retrospective",
+  "category": "cyber-defense",
   "title": "JMU Blue Team Mock Competition",
   "date_raw": "2026-04-25",
   "date": "Apr 2026",
@@ -35,6 +41,8 @@
  {
   "slug": "jmus-makeathon",
   "path": "2026/jmus-makeathon.md",
+  "type": "retrospective",
+  "category": "makeathon",
   "title": "JMUS Makeathon, Spring 2026",
   "date_raw": "2026-02-08",
   "date": "Feb 2026",
@@ -46,6 +54,8 @@
  {
   "slug": "maccdc-qualifiers",
   "path": "2026/maccdc-qualifiers.md",
+  "type": "retrospective",
+  "category": "cyber-defense",
   "title": "MACCDC 2026 Qualifiers",
   "date_raw": "2026-01-17",
   "date": "Jan 2026",
@@ -57,6 +67,8 @@
  {
   "slug": "maccdc-regionals",
   "path": "2026/maccdc-regionals.md",
+  "type": "retrospective",
+  "category": "cyber-defense",
   "title": "MACCDC 2026 Regionals",
   "date_raw": "2026-01-25",
   "date": "Jan 2026",
@@ -68,6 +80,8 @@
  {
   "slug": "rvasec15",
   "path": "2026/rvasec15.md",
+  "type": "retrospective",
+  "category": "conference",
   "title": "RVASEC15",
   "date_raw": "2026-04-12",
   "date": "Apr 2026",
@@ -79,6 +93,8 @@
  {
   "slug": "summit-ctf",
   "path": "2026/summit-ctf.md",
+  "type": "retrospective",
+  "category": "ctf",
   "title": "Summit CTF 2026",
   "date_raw": "2026-02-22",
   "date": "Feb 2026",
@@ -90,6 +106,8 @@
  {
   "slug": "vmi-cyber-fusion-platform",
   "path": "2026/vmi-cyber-fusion-platform.md",
+  "type": "project-writeup",
+  "category": "ctf",
   "title": "VMI CyberFusion 2026: CTF Orchestrator Overview",
   "date_raw": "2026-02",
   "date": "Feb 2026",
@@ -101,6 +119,8 @@
  {
   "slug": "vmi-cyber-fusion",
   "path": "2026/vmi-cyber-fusion.md",
+  "type": "retrospective",
+  "category": "ctf",
   "title": "VMI CyberFusion 2026 Retrospective",
   "date_raw": "2026-02",
   "date": "Feb 2026",

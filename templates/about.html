@@ -4,34 +4,32 @@
 {% block content %}
 <header class="page-head">
     <h1>About</h1>
-    <p class="lede">Who I am, what I do, and what I know.</p>
 </header>
-<section aria-label="Background">
-    {% for p in profile.about %}<p>{{ p }}</p>{% endfor %}
-    <blockquote>
-        <p>“{{ profile.quote.text }}”</p>
-        <footer>{{ profile.quote.by }}</footer>
-    </blockquote>
+<section aria-labelledby="bg-h">
+    <h2 id="bg-h" class="sec"><span class="num" aria-hidden="true">01</span><span>background</span></h2>
+    <div class="in">
+        {% for p in profile.about %}<p>{{ p }}</p>{% endfor %}
+    </div>
 </section>
 <section aria-labelledby="exp-h">
-    <h2 id="exp-h">Experience</h2>
+    <h2 id="exp-h" class="sec"><span class="num" aria-hidden="true">02</span><span>experience</span></h2>
     <div class="rows">
         {% for e in profile.experience %}
-        <article class="row stack">
-            <div class="row-head">
+        <article class="row g">
+            <span class="label gl">{{ e.when }}</span>
+            <div>
                 <h3>{{ e.role }}, {{ e.org }}</h3>
-                <span class="label">{{ e.when }}</span>
+                <p>{{ e.text }}</p>
             </div>
-            <p>{{ e.text }}</p>
         </article>
         {% endfor %}
     </div>
 </section>
 <section aria-labelledby="skills-h">
-    <h2 id="skills-h">Skills</h2>
-    <dl class="skills">
+    <h2 id="skills-h" class="sec"><span class="num" aria-hidden="true">03</span><span>skills</span></h2>
+    <dl class="skills rows">
         {% for s in profile.skills %}
-        <div class="row"><dt>{{ s.label }}</dt><dd>{{ s['items'] }}</dd></div>
+        <div class="row g"><dt class="gl">{{ s.label }}</dt><dd>{{ s['items'] }}</dd></div>
         {% endfor %}
     </dl>
 </section>

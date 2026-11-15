@@ -25,7 +25,7 @@ def test_empty_and_draft_skipped():
              "e/c-retrospective.md": "# C\n<!-- draft -->\n",
              "e/d-retrospective.md": "",
              "e/ok-retrospective.md": "# Ok\n"}
-    out = sync.build_writeups(tree, texts.__getitem__, INCLUDE, [])
+    out = sync.build_writeups(tree, texts.__getitem__, INCLUDE)
     assert [p["slug"] for p in out] == ["ok-retrospective"]
 
 
@@ -33,7 +33,7 @@ def test_blocked_file_never_fetched():
     tree = [{"type": "blob", "path": "MACCDC-2026/Qualifier/MACCDC-Palo-Alto-reference.md"}]
     def boom(path):
         raise AssertionError("fetched a non-allowlisted file")
-    assert sync.build_writeups(tree, boom, INCLUDE, []) == []
+    assert sync.build_writeups(tree, boom, INCLUDE) == []
 
 
 def test_slug_and_collision():
@@ -54,12 +54,9 @@ def test_date_parsing():
     assert sync.parse_date("# T\n") == ("", "", "")
 
 
-def test_competition_date_fallback():
-    comps = [{"post": "x-overview", "date": "Feb 2026"}]
-    w = sync.build_writeup("E/x-overview.md", "x-overview", "# X\n", comps)
-    assert (w["date"], w["sort_key"], w["event"]) == ("Feb 2026", "2026-02-01", "E")
-    w = sync.build_writeup("E/y-overview.md", "y-overview", "# Y\n", comps)
-    assert (w["date"], w["sort_key"]) == ("", "")
+def test_writeup_without_date():
+    w = sync.build_writeup("E/y-overview.md", "y-overview", "# Y\n")
+    assert (w["date"], w["sort_key"], w["event"], w["type"]) == ("", "", "E", "")
     assert w["source_url"].endswith("/blob/HEAD/E/y-overview.md")
 
 
@@ -83,8 +80,9 @@ def test_failure_without_cache_exits(tmp_path, monkeypatch):
         sync.run()
 
 
-def test_clean_repos_drops_forks_and_hidden():
+def test_clean_repos_drops_forks_private_and_hidden():
     raw = [{"name": "a", "html_url": "u", "fork": True},
+           {"name": "secret", "html_url": "u", "private": True},
            {"name": "SketchyRock", "html_url": "u"},
            {"name": "keep", "html_url": "u", "language": "Go"}]
     out = sync.clean_repos(raw, ["sketchyrock"])
@@ -95,13 +93,14 @@ def test_front_matter_drives_title_date_and_type():
     text = '---\ntitle: "Demo Event"\ntype: "retrospective"\ndate: 2026-02\n---\n\n# Demo Event\n\nBody.\n'
     meta, body = sync.split_front_matter(text)
     assert meta["type"] == "retrospective" and body.lstrip().startswith("# Demo Event")
-    post = sync.build_writeup("2026/demo.md", "demo", text, [])
+    post = sync.build_writeup("2026/demo.md", "demo", text)
     assert (post["title"], post["date"], post["sort_key"]) == ("Demo Event", "Feb 2026", "2026-02-01")
+    assert post["type"] == "retrospective"
     assert "type:" not in post["markdown"]
 
 
 def test_types_filter_skips_other_documents():
     tree = [{"type": "blob", "path": "2026/a.md"}, {"type": "blob", "path": "2026/b.md"}]
     texts = {"2026/a.md": "---\ntype: retrospective\n---\n# A\n", "2026/b.md": "---\ntype: reference\n---\n# B\n"}
-    out = sync.build_writeups(tree, texts.__getitem__, ["20??/*.md"], [], types=["retrospective"])
+    out = sync.build_writeups(tree, texts.__getitem__, ["20??/*.md"], types=["retrospective"])
     assert [p["slug"] for p in out] == ["a"]

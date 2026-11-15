@@ -86,72 +86,17 @@ def render_post(post):
 
 # ---------- competitions and projects ----------
 
-def _date_key(date, day_source=""):
-    """(year, month, day) from a 'Nov 2026' label, with the day taken from an ISO date if given."""
-    try:
-        d = datetime.datetime.strptime(date, "%b %Y")
-    except (TypeError, ValueError):
-        return (0, 0, 0)
-    day = int(day_source[8:10]) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", day_source or "") else 0
-    return (d.year, d.month, day)
-
-
 def competition_list():
-    """Every competition, newest first. Curated rows come from competitions.json; any write-up
-    not referenced there gets a row of its own, so a write-up is never hidden."""
-    posts = {p["slug"]: p for p in all_writeups()}
-    out, used = [], set()
-    for c in load("competitions.json"):
-        c = dict(c)
-        c["post"] = c.get("post") if c.get("post") in posts else None
-        c["also"] = [{"slug": s, "title": posts[s]["title"]} for s in c.get("also", []) if s in posts]
-        used.update(x for x in [c["post"], *[a["slug"] for a in c["also"]]] if x)
-        c["_key"] = _date_key(c["date"], posts[c["post"]]["sort_key"] if c["post"] else "")
-        out.append(c)
-    for slug, p in posts.items():
-        if slug not in used:
-            out.append({"date": p["date"], "type": None, "event": p["title"], "result": "", "note": "",
-                        "post": slug, "also": [], "_key": _date_key(p["date"], p["sort_key"])})
-    out.sort(key=lambda c: c["_key"], reverse=True)
-    return out
-
-
-def month_year(iso):
-    try:
-        d = datetime.datetime.fromisoformat(iso.replace("Z", "+00:00"))
-    except (AttributeError, ValueError):
-        return None
-    return d.strftime("%b %Y")
+    """Every retrospective in the writeups repo, newest first. Other document types (project
+    write-ups) still render at /competitions/<slug> but are not listed."""
+    posts = [p for p in all_writeups() if p.get("type", "retrospective") == "retrospective"]
+    return sorted(posts, key=lambda p: p.get("sort_key") or "", reverse=True)
 
 
 def project_list():
-    """Public repos come from the GitHub cache (newest push first, GitHub's description, link to the
-    repo). Private work has no repo, so projects.json lists it by hand and it goes after."""
-    repos = sorted(cached("repos.json"), key=lambda r: r["pushed_at"] or "", reverse=True)
-    out = []
-    for r in repos:
-        out.append({
-            "name": r["name"],
-            "description": r["description"] or "",
-            "stack": [r["language"]] if r["language"] else [],
-            "repo": r["html_url"],
-            "status": "archived" if r["archived"] else "public",
-            "language": r["language"],
-            "updated": month_year(r["pushed_at"]),
-            "live": True,
-        })
-    for p in load("projects.json"):
-        out.append({
-            "name": p["name"],
-            "description": p.get("description", ""),
-            "stack": list(p.get("stack", [])),
-            "repo": None,
-            "status": "private",
-            "language": None,
-            "updated": None,
-            "live": False,
-        })
-    return out
+    """Public repos from the GitHub cache, A to Z by name (case-insensitive) so the order is stable."""
+    repos = sorted(cached("repos.json"), key=lambda r: r["name"].lower())
+    return [{"name": r["name"], "description": r.get("description") or "", "repo": r["html_url"]} for r in repos]
 
 
 # ---------- photos ----------

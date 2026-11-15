@@ -4,8 +4,8 @@ Source for my personal site at https://portfolio.idalia.dev. It is a small Flask
 
 ## What feeds the site
 
-- `data/profile.json`, `data/competitions.json`, `data/projects.json` and `data/photos.json` hold the copy.
-- Public repos and write-ups come from GitHub. `sync.py` lists my public repos and reads the `retrospective` and `project-writeup` documents (by the `type` in their front matter) from [SketchyRock/writeups](https://github.com/SketchyRock/writeups), under the year folders. Filters are in `data/github.json`.
+- `data/profile.json` and `data/photos.json` hold the copy for Home, About and Photos.
+- Competitions and Projects come only from GitHub. `sync.py` lists my public repos (name, link and About text) and reads the `retrospective` and `project-writeup` documents (by the `type` in their front matter) from [SketchyRock/writeups](https://github.com/SketchyRock/writeups), under the year folders. Filters are in `data/github.json`.
 - The results are cached in `data/cache/`. If GitHub cannot be reached, or returns nothing, the build keeps the cached copy.
 
 ## Deploys
