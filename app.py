@@ -124,37 +124,12 @@ def month_year(iso):
     return d.strftime("%b %Y")
 
 
-def repo_name(url):
-    return url.rstrip("/").split("/")[-1].lower() if url else None
-
-
 def project_list():
-    repos = cached("repos.json")
-    by_name = {r["name"].lower(): r for r in repos}
-    used = set()
+    """Public repos come from the GitHub cache (newest push first, GitHub's description, link to the
+    repo). Private work has no repo, so projects.json lists it by hand and it goes after."""
+    repos = sorted(cached("repos.json"), key=lambda r: r["pushed_at"] or "", reverse=True)
     out = []
-    for p in load("projects.json"):
-        r = by_name.get(repo_name(p.get("repo")))
-        entry = {
-            "name": p["name"],
-            "description": p.get("description", ""),
-            "stack": list(p.get("stack", [])),
-            "repo": p.get("repo"),
-            "status": "public" if p.get("repo") else "private",
-            "language": None,
-            "updated": None,
-            "live": False,
-        }
-        if r:
-            used.add(r["name"].lower())
-            entry["status"] = "archived" if r["archived"] else "public"
-            entry["language"] = r["language"]
-            entry["updated"] = month_year(r["pushed_at"])
-            entry["live"] = True
-        out.append(entry)
-    rest = [r for r in repos if r["name"].lower() not in used]
-    rest.sort(key=lambda r: r["pushed_at"] or "", reverse=True)
-    for r in rest:
+    for r in repos:
         out.append({
             "name": r["name"],
             "description": r["description"] or "",
@@ -164,6 +139,17 @@ def project_list():
             "language": r["language"],
             "updated": month_year(r["pushed_at"]),
             "live": True,
+        })
+    for p in load("projects.json"):
+        out.append({
+            "name": p["name"],
+            "description": p.get("description", ""),
+            "stack": list(p.get("stack", [])),
+            "repo": None,
+            "status": "private",
+            "language": None,
+            "updated": None,
+            "live": False,
         })
     return out
 
