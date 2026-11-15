@@ -29,9 +29,9 @@
  {
   "name": "portfolio",
   "html_url": "https://github.com/SketchyRock/portfolio",
-  "description": "Source for my personal portfolio site: Flask, projects from JSON, blog from Markdown.",
+  "description": "My portfolio site. Flask rendered to static HTML on GitHub Pages; projects and competition write-ups sync from GitHub daily.",
   "language": "Python",
-  "pushed_at": "2026-11-15T23:39:00Z",
+  "pushed_at": "2026-11-15T23:53:52Z",
   "archived": false,
   "stargazers_count": 0
  },
@@ -58,7 +58,7 @@
   "html_url": "https://github.com/SketchyRock/writeups",
   "description": "Retrospectives and reference notes from cybersecurity competitions, hackathons, and conferences. Markdown with YAML front matter.",
   "language": "Python",
-  "pushed_at": "2026-11-15T19:33:31Z",
+  "pushed_at": "2026-11-15T23:50:11Z",
   "archived": false,
   "stargazers_count": 0
  }
