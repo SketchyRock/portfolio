@@ -30,8 +30,8 @@
   "name": "portfolio",
   "html_url": "https://github.com/SketchyRock/portfolio",
   "description": "Source for my personal portfolio site: Flask, projects from JSON, blog from Markdown.",
-  "language": "HTML",
-  "pushed_at": "2026-11-15T21:27:08Z",
+  "language": "Python",
+  "pushed_at": "2026-11-15T23:39:00Z",
   "archived": false,
   "stargazers_count": 0
  },

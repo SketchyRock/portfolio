@@ -36,44 +36,40 @@ def test_h1_kept(cache):
     assert "<h1>Title</h1>" in render("# Title\n\ntext")
 
 
-def test_competition_list_includes_every_writeup_newest_first(cache):
-    ws = [dict(POST, slug="x", title="Extra", date="Dec 2026", sort_key="2026-12-05"),
-          dict(POST, slug="a-retro", title="A", date="Jan 2025", sort_key="2025-01-02")]
+def test_competition_list_only_retrospectives_newest_first(cache):
+    ws = [dict(POST, slug="old", type="retrospective", sort_key="2025-01-02"),
+          dict(POST, slug="new", type="retrospective", sort_key="2026-12-05"),
+          dict(POST, slug="tool", type="project-writeup", sort_key="2026-12-31")]
     cache(ws)
-    comps = appmod.competition_list()
-    assert {"x", "a-retro"} <= {c["post"] for c in comps}
-    assert comps[0]["post"] == "x"
-    keys = [c["_key"] for c in comps]
-    assert keys == sorted(keys, reverse=True)
+    assert [c["slug"] for c in appmod.competition_list()] == ["new", "old"]
 
 
-def test_competition_post_none_when_missing(cache):
-    cache([POST])
-    comps = appmod.competition_list()
-    assert all(c["post"] is None or c["post"] == "a-retro" for c in comps)
-    assert any(c["post"] is None for c in comps)
+def test_competitions_page_lists_names_only(cache):
+    cache([dict(POST, slug="new", title="Big CTF", type="retrospective", date="Dec 2026", sort_key="2026-12-05")])
+    html = appmod.app.test_client().get("/competitions").get_data(as_text=True)
+    assert '<a href="/competitions/new">Big CTF</a>' in html
+    assert "1 events" in html
 
 
-def test_projects_merge(cache):
+def test_project_list_public_repos_newest_first(cache):
     repos = [
-        {"name": "Gvoid", "html_url": "https://github.com/SketchyRock/Gvoid", "description": "d",
-         "language": "JavaScript", "pushed_at": "2026-02-03T00:00:00Z", "archived": True, "stargazers_count": 0},
-        {"name": "newer", "html_url": "https://github.com/SketchyRock/newer", "description": "new",
-         "language": "Go", "pushed_at": "2026-05-01T00:00:00Z", "archived": False, "stargazers_count": 0},
         {"name": "older", "html_url": "https://github.com/SketchyRock/older", "description": None,
-         "language": None, "pushed_at": "2025-01-01T00:00:00Z", "archived": False, "stargazers_count": 0},
+         "pushed_at": "2025-01-01T00:00:00Z"},
+        {"name": "newer", "html_url": "https://github.com/SketchyRock/newer", "description": "new",
+         "pushed_at": "2026-05-01T00:00:00Z"},
     ]
     cache([], repos)
-    ps = appmod.project_list()
-    names = [p["name"] for p in ps]
-    curated = [p["name"] for p in appmod.load("projects.json")]
-    assert names == ["newer", "Gvoid", "older"] + curated
-    g = next(p for p in ps if p["name"] == "Gvoid")
-    assert (g["status"], g["language"], g["updated"], g["live"]) == ("archived", "JavaScript", "Feb 2026", True)
-    assert next(p for p in ps if p["name"] == "newer")["stack"] == ["Go"]
-    assert next(p for p in ps if p["name"] == "older")["stack"] == []
-    assert len(set(p["repo"] or p["name"] for p in ps)) == len(ps)
-    assert all(p["status"] == "private" for p in ps if p["repo"] is None)
+    assert appmod.project_list() == [
+        {"name": "newer", "description": "new", "repo": "https://github.com/SketchyRock/newer"},
+        {"name": "older", "description": "", "repo": "https://github.com/SketchyRock/older"},
+    ]
+
+
+def test_empty_lists_render(cache):
+    cache([], [])
+    c = appmod.app.test_client()
+    assert "No write-ups yet." in c.get("/competitions").get_data(as_text=True)
+    assert "No public repos yet." in c.get("/projects").get_data(as_text=True)
 
 
 @pytest.mark.parametrize("url", ["/", "/about", "/competitions", "/projects", "/photos"])

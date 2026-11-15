@@ -12,9 +12,6 @@
     <meta property="og:title" content="{{ page_title }}">
     <meta property="og:description" content="{{ page_desc }}">
     <meta property="og:type" content="website">
-    <script>
-        try { var t = localStorage.getItem("theme"); if (t === "light" || t === "dark") document.documentElement.dataset.theme = t; } catch (e) {}
-    </script>
     <link rel="preload" href="{{ url_for('static', filename='fonts/geist-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
@@ -29,7 +26,6 @@
                 <a href="{{ url_for('competitions') }}"{% if ep == 'competitions' %} aria-current="page"{% endif %}>competitions</a>
                 <a href="{{ url_for('projects') }}"{% if ep == 'projects' %} aria-current="page"{% endif %}>projects</a>
                 {% if has_photos %}<a href="{{ url_for('photos') }}"{% if ep == 'photos' %} aria-current="page"{% endif %}>photos</a>{% endif %}
-                <button class="theme-toggle" type="button" id="theme-toggle" hidden aria-label="Switch between light and dark theme"></button>
             </nav>
         </div>
     </header>
@@ -44,19 +40,5 @@
         <p class="footer-links"><a href="mailto:hinsenzo15@gmail.com">Email</a><a href="https://github.com/SketchyRock" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/enzohins/" rel="noopener">LinkedIn</a><a href="https://github.com/SketchyRock/portfolio" rel="noopener">Source on GitHub</a></p>
         </div>
     </footer>
-    <script>
-        (function () {
-            var b = document.getElementById("theme-toggle"), r = document.documentElement;
-            function current() { return r.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"); }
-            function label() { b.textContent = current() === "dark" ? "light mode" : "dark mode"; }
-            b.hidden = false; label();
-            b.addEventListener("click", function () {
-                var next = current() === "dark" ? "light" : "dark";
-                r.dataset.theme = next;
-                try { localStorage.setItem("theme", next); } catch (e) {}
-                label();
-            });
-        })();
-    </script>
 </body>
 </html>
