@@ -67,8 +67,7 @@ def test_projects_merge(cache):
     ps = appmod.project_list()
     names = [p["name"] for p in ps]
     curated = [p["name"] for p in appmod.load("projects.json")]
-    assert names[:len(curated)] == curated
-    assert names[len(curated):] == ["newer", "older"]
+    assert names == ["newer", "Gvoid", "older"] + curated
     g = next(p for p in ps if p["name"] == "Gvoid")
     assert (g["status"], g["language"], g["updated"], g["live"]) == ("archived", "JavaScript", "Feb 2026", True)
     assert next(p for p in ps if p["name"] == "newer")["stack"] == ["Go"]

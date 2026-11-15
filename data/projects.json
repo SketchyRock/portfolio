@@ -21,26 +21,6 @@
   "status": "private"
  },
  {
-  "name": "Gvoid",
-  "description": "A minimalist deep work station with a Pomodoro timer and ambient soundscapes.",
-  "stack": [
-   "React",
-   "Vite",
-   "Tailwind"
-  ],
-  "repo": "https://github.com/SketchyRock/Gvoid"
- },
- {
-  "name": "writeups",
-  "description": "Competition retrospectives, scripts and hardening checklists.",
-  "stack": [
-   "Markdown",
-   "Incident response",
-   "Scripting"
-  ],
-  "repo": "https://github.com/SketchyRock/writeups"
- },
- {
   "name": "Barber booking site",
   "description": "A booking site for a friend's barber business. He used it for a while before moving to another tool.",
   "stack": [
@@ -50,46 +30,5 @@
    "Framer Motion"
   ],
   "status": "private"
- },
- {
-  "name": "Password manager",
-  "description": "A terminal password manager that stores credentials locally.",
-  "stack": [
-   "Java",
-   "CLI",
-   "Base64"
-  ],
-  "repo": "https://github.com/SketchyRock/password-manager"
- },
- {
-  "name": "MP3 player",
-  "description": "A small Python terminal player that streams a local folder of MP3s for lofi sessions.",
-  "stack": [
-   "Python",
-   "TUI"
-  ],
-  "repo": "https://github.com/SketchyRock/mp3-player"
- },
- {
-  "name": "Scoundrel",
-  "description": "The solo dungeon-crawling card game, in the terminal.",
-  "stack": [
-   "Python",
-   "TUI",
-   "Game logic"
-  ],
-  "repo": "https://github.com/SketchyRock/scoundrel-game"
- },
- {
-  "name": "This site",
-  "description": "Flask templates built to static HTML and hosted on Vercel. Repos and writeups are pulled from GitHub every day. Built with AI agents, directed by me.",
-  "stack": [
-   "Python",
-   "Jinja2",
-   "CSS",
-   "GitHub Actions",
-   "Vercel"
-  ],
-  "repo": "https://github.com/SketchyRock/portfolio-web"
  }
 ]
