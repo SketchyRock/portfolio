@@ -28,7 +28,6 @@
                 <a href="{{ url_for('about') }}"{% if ep == 'about' %} aria-current="page"{% endif %}>about</a>
                 <a href="{{ url_for('competitions') }}"{% if ep == 'competitions' %} aria-current="page"{% endif %}>competitions</a>
                 <a href="{{ url_for('projects') }}"{% if ep == 'projects' %} aria-current="page"{% endif %}>projects</a>
-                <a href="{{ url_for('blog') }}"{% if ep in ('blog', 'blog_post') %} aria-current="page"{% endif %}>writeups</a>
                 {% if has_photos %}<a href="{{ url_for('photos') }}"{% if ep == 'photos' %} aria-current="page"{% endif %}>photos</a>{% endif %}
                 <button class="theme-toggle" type="button" id="theme-toggle" hidden aria-label="Switch between light and dark theme"></button>
             </nav>

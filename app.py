@@ -42,16 +42,6 @@ def all_writeups():
     return cached("writeups.json")
 
 
-def post_list():
-    """Newest first; undated last, then by title."""
-    posts = [{k: p[k] for k in ("slug", "title", "date", "event")} | {"sort_key": p["sort_key"]}
-             for p in all_writeups()]
-    posts.sort(key=lambda p: p["title"].lower())
-    posts.sort(key=lambda p: p["sort_key"], reverse=True)
-    posts.sort(key=lambda p: not p["sort_key"])
-    return posts
-
-
 def rewrite_links(html, post, slugs_by_path):
     """Make relative image and link targets work from the site instead of the repo."""
     folder = posixpath.dirname(post["path"])
@@ -75,9 +65,9 @@ def rewrite_links(html, post, slugs_by_path):
             u = urlsplit(href)
             path = resolve(u.path)
             if path == "README.md":
-                href = "/blog"
+                href = "/competitions"
             elif path in slugs_by_path:
-                href = "/blog/" + slugs_by_path[path]
+                href = "/competitions/" + slugs_by_path[path]
             else:
                 href = BLOB + quote(path)
             if u.fragment:
@@ -96,13 +86,33 @@ def render_post(post):
 
 # ---------- competitions and projects ----------
 
+def _date_key(date, day_source=""):
+    """(year, month, day) from a 'Nov 2026' label, with the day taken from an ISO date if given."""
+    try:
+        d = datetime.datetime.strptime(date, "%b %Y")
+    except (TypeError, ValueError):
+        return (0, 0, 0)
+    day = int(day_source[8:10]) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", day_source or "") else 0
+    return (d.year, d.month, day)
+
+
 def competition_list():
-    slugs = {p["slug"] for p in all_writeups()}
-    out = []
+    """Every competition, newest first. Curated rows come from competitions.json; any write-up
+    not referenced there gets a row of its own, so a write-up is never hidden."""
+    posts = {p["slug"]: p for p in all_writeups()}
+    out, used = [], set()
     for c in load("competitions.json"):
         c = dict(c)
-        c["post"] = c.get("post") if c.get("post") in slugs else None
+        c["post"] = c.get("post") if c.get("post") in posts else None
+        c["also"] = [{"slug": s, "title": posts[s]["title"]} for s in c.get("also", []) if s in posts]
+        used.update(x for x in [c["post"], *[a["slug"] for a in c["also"]]] if x)
+        c["_key"] = _date_key(c["date"], posts[c["post"]]["sort_key"] if c["post"] else "")
         out.append(c)
+    for slug, p in posts.items():
+        if slug not in used:
+            out.append({"date": p["date"], "type": None, "event": p["title"], "result": "", "note": "",
+                        "post": slug, "also": [], "_key": _date_key(p["date"], p["sort_key"])})
+    out.sort(key=lambda c: c["_key"], reverse=True)
     return out
 
 
@@ -187,7 +197,6 @@ def home():
         profile=load("profile.json"),
         competitions=competition_list(),
         projects=project_list(),
-        posts=post_list(),
     )
 
 
@@ -206,18 +215,13 @@ def projects():
     return render_template("projects.html", projects=project_list())
 
 
-@app.route("/blog")
-def blog():
-    return render_template("blog_list.html", posts=post_list())
-
-
-@app.route("/blog/<slug>")
-def blog_post(slug):
+@app.route("/competitions/<slug>")
+def competition_post(slug):
     post = next((p for p in all_writeups() if p["slug"] == slug), None)
     if post is None:
         abort(404)
     meta = {k: v for k, v in post.items() if k != "markdown"}
-    return render_template("blog_post.html", post=meta, title=post["title"], content=render_post(post))
+    return render_template("competition_post.html", post=meta, title=post["title"], content=render_post(post))
 
 
 @app.route("/photos")

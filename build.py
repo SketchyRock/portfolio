@@ -11,7 +11,7 @@ import shutil
 import sys
 
 import sync
-from app import app, post_list, BASE
+from app import app, all_writeups, BASE
 
 OUT = os.path.join(BASE, "dist")
 
@@ -20,7 +20,6 @@ PAGES = {
     "/about": "about.html",
     "/competitions": "competitions.html",
     "/projects": "projects.html",
-    "/blog": "blog.html",
     "/photos": "photos.html",
 }
 
@@ -40,9 +39,9 @@ def main():
     client = app.test_client()
     root = f"http://localhost{base}/"
     routes = dict(PAGES)
-    posts = post_list()
+    posts = all_writeups()
     for post in posts:
-        routes[f"/blog/{post['slug']}"] = f"blog/{post['slug']}.html"
+        routes[f"/competitions/{post['slug']}"] = f"competitions/{post['slug']}.html"
     for url, path in routes.items():
         r = client.get(url, base_url=root)
         assert r.status_code == 200, f"{url} -> {r.status_code}"

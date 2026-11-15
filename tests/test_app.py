@@ -24,9 +24,9 @@ def test_image_and_link_rewriting(cache):
     html = render("![x](img/a.png)\n\n[o](b-over.md)\n\n[f](scripts/run.sh)\n\n"
                   "[up](../README.md)\n\n[abs](https://example.com/a)\n\n![r](https://example.com/i.png)")
     assert 'src="https://raw.githubusercontent.com/SketchyRock/writeups/HEAD/ICPC-2025/img/a.png"' in html
-    assert 'href="/blog/b-over"' in html
+    assert 'href="/competitions/b-over"' in html
     assert 'href="https://github.com/SketchyRock/writeups/blob/HEAD/ICPC-2025/scripts/run.sh"' in html
-    assert 'href="/blog"' in html
+    assert 'href="/competitions"' in html
     assert 'href="https://example.com/a"' in html
     assert 'src="https://example.com/i.png"' in html
 
@@ -36,11 +36,15 @@ def test_h1_kept(cache):
     assert "<h1>Title</h1>" in render("# Title\n\ntext")
 
 
-def test_post_order(cache):
-    ws = [dict(POST, slug="u", title="Zed", sort_key=""), dict(POST, slug="o", title="Old", sort_key="2025-01-01"),
-          dict(POST, slug="n", title="New", sort_key="2026-01-01"), dict(POST, slug="a", title="Alpha", sort_key="")]
+def test_competition_list_includes_every_writeup_newest_first(cache):
+    ws = [dict(POST, slug="x", title="Extra", date="Dec 2026", sort_key="2026-12-05"),
+          dict(POST, slug="a-retro", title="A", date="Jan 2025", sort_key="2025-01-02")]
     cache(ws)
-    assert [p["slug"] for p in appmod.post_list()] == ["n", "o", "a", "u"]
+    comps = appmod.competition_list()
+    assert {"x", "a-retro"} <= {c["post"] for c in comps}
+    assert comps[0]["post"] == "x"
+    keys = [c["_key"] for c in comps]
+    assert keys == sorted(keys, reverse=True)
 
 
 def test_competition_post_none_when_missing(cache):
@@ -73,7 +77,7 @@ def test_projects_merge(cache):
     assert all(p["status"] == "private" for p in ps if p["repo"] is None)
 
 
-@pytest.mark.parametrize("url", ["/", "/about", "/competitions", "/projects", "/blog", "/photos"])
+@pytest.mark.parametrize("url", ["/", "/about", "/competitions", "/projects", "/photos"])
 def test_pages_ok(url):
     assert appmod.app.test_client().get(url).status_code == 200
 
@@ -83,11 +87,15 @@ def test_all_cached_posts_ok():
     posts = appmod.cached("writeups.json")
     assert len(posts) >= 1
     for p in posts:
-        assert c.get(f"/blog/{p['slug']}").status_code == 200
+        assert c.get(f"/competitions/{p['slug']}").status_code == 200
+
+
+def test_old_blog_urls_gone():
+    assert appmod.app.test_client().get("/blog").status_code == 404
 
 
 def test_unknown_slug_404():
-    r = appmod.app.test_client().get("/blog/nope")
+    r = appmod.app.test_client().get("/competitions/nope")
     assert r.status_code == 404
 
 

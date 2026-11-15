@@ -163,6 +163,9 @@ blockquote footer { font-style: normal; font-size: 0.875rem; color: var(--muted)
 
 /* blog prose */
 .back { font-size: 0.9375rem; margin: 1.5rem 0 1rem; }
+.btn { display: inline-block; padding: 0.35rem 0.8rem; border: 1px solid var(--line); border-radius: 4px; text-decoration: none; }
+.btn:hover { border-color: var(--strong); text-decoration: none; }
+.back .btn + a { margin-left: 1rem; }
 .prose { margin-bottom: 1.5rem; }
 .prose h1 { margin-top: 0.25rem; }
 .prose h2 { margin-top: 2.25rem; }
