@@ -1,11 +1,11 @@
 {
   "name": "Enzo Hins",
   "handle": "SketchyRock",
-  "tagline": "Security research at CCI. CTFs, blue team and programming contests.",
+  "tagline": "Security research at Virginia's Commonwealth Cyber Initiative. CTFs, blue team, red team, programming competitions and hackathons.",
   "school": "James Madison University",
-  "degree": "B.S. Computer Science, cybersecurity focus. May 2029.",
-  "gpa": "3.97",
-  "email": "hinsem@dukes.jmu.edu",
+  "degree": "B.S. Computer Science",
+  "gpa": "3.9",
+  "email": "hinsenzo15@gmail.com",
   "github": "https://github.com/SketchyRock",
   "linkedin": "https://www.linkedin.com/in/enzohins/",
   "about": [
@@ -22,7 +22,8 @@
   },
   "now": [
     "Security research for HGN-Sense at the Commonwealth Cyber Initiative",
-    "Infrastructure lead, JMU Cyber Defense Club; president, Competitive Programming Club"
+    "Executive, Cyber Defense Club at JMU",
+    "President, Competitive Programming Club at JMU"
   ],
   "experience": [
     {
@@ -71,5 +72,6 @@
       "label": "Human languages",
       "items": "English, Russian, a little Chinese and German"
     }
-  ]
+  ],
+  "focus": "Software engineering and cybersecurity"
 }

@@ -8,7 +8,8 @@
     <h1>{{ profile.name }}</h1>
     <dl class="kv">
         <div><dt>school</dt><dd>{{ profile.school }}</dd></div>
-        <div><dt>degree</dt><dd>{{ profile.degree.rstrip('.') }}</dd></div>
+        <div><dt>degree</dt><dd>{{ profile.degree }}</dd></div>
+        <div><dt>focus</dt><dd>{{ profile.focus }}</dd></div>
         <div><dt>gpa</dt><dd>{{ profile.gpa }}</dd></div>
         <div><dt>links</dt><dd class="links"><a href="{{ profile.github }}" rel="noopener">github</a><a href="{{ profile.linkedin }}" rel="noopener">linkedin</a><a href="mailto:{{ profile.email }}">email</a></dd></div>
     </dl>
@@ -34,6 +35,6 @@
 
 <section aria-labelledby="contact-h">
     <h2 id="contact-h" class="sec"><span class="num" aria-hidden="true">03</span><span>contact</span></h2>
-    <p class="in">Looking for Summer 2027 internships in cybersecurity or software engineering. Open to relocating. <a href="mailto:{{ profile.email }}">{{ profile.email }}</a></p>
+    <p class="in">Seeking opportunities in software engineering and cybersecurity.</p>
 </section>
 {% endblock %}
