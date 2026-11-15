@@ -9,17 +9,14 @@
   "github": "https://github.com/SketchyRock",
   "linkedin": "https://www.linkedin.com/in/enzohins/",
   "about": [
-    "CS sophomore at JMU with a cybersecurity focus and a Russian minor. Most of my time goes to competitions, club work and projects.",
-    "I started on defense, running a Palo Alto firewall for MACCDC, and moved toward offense. I lean red team now and still like shipping products.",
-    "I use agentic AI tools daily and review everything they produce. I built an agent loop that solved the VMI CyberFusion challenges well inside the time limit. I directed AI to build this site and made the design calls.",
-    "Math is what draws me to machine learning: linear algebra, calculus, and the theory behind them.",
-    "Long term: national security, as a cybersecurity or software engineer or in AI and ML. Open to private and public sector work.",
-    "Outside of that: skateboarding and Brazilian jiu-jitsu."
+    "Computer science sophomore at JMU, focusing on software engineering and cybersecurity. Most of my time goes to competitions, club work, projects and research.",
+    "I fill the role the team needs and learn what the job takes. On defense that has meant administering a Palo Alto firewall and hardening Linux and Windows systems.",
+    "I'm highly proficient with AI tools. I understand how they work, what they do well, and how to get the best results from them. For VMI CyberFusion I built an AI-assisted CTF orchestrator that solved the Microsoft CTF challenges early in the competition, ahead of every other team. My partner and I placed first and second.",
+    "I enjoy math, especially calculus and linear algebra, which is what draws me to machine learning, AI and the theory behind them. I also read the classics, psychology and philosophy, and follow politics, history and international conflict.",
+    "I've lived in Moscow, Russia; Beijing, China; and Frankfurt, Germany.",
+    "I have a strong drive to serve my country with my skills in software engineering or cybersecurity. I also find research and private sector work fulfilling.",
+    "Outside of academics: skateboarding, weightlifting, Brazilian jiu-jitsu, Old School RuneScape, and automating things with AI."
   ],
-  "quote": {
-    "text": "The things that we love tell us what we are.",
-    "by": "St. Thomas Aquinas"
-  },
   "now": [
     {
       "text": "Security research for HGN-Sense at Virginia's Commonwealth Cyber Initiative",
@@ -36,50 +33,70 @@
   ],
   "experience": [
     {
-      "role": "Cybersecurity Researcher",
-      "org": "Commonwealth Cyber Initiative, HGN-Sense",
+      "role": "Cybersecurity Researcher and Project Lead",
+      "org": "Virginia Commonwealth Cyber Initiative (CCI), HGN-Sense",
       "when": "May 2026 to now",
-      "text": "Security for an ML system that flags impairment from Horizontal Gaze Nystagmus eye movements: AES-256-GCM encryption of biometric data, model weight protection, anti-spoofing."
+      "text": "Sole cybersecurity researcher on HGN-Sense, an ML system that flags impairment from Horizontal Gaze Nystagmus eye movements. I implement all of its security (AES-256-GCM encryption of biometric data, model weight protection, anti-spoofing) and help lead the software engineering, data collection and machine learning work."
     },
     {
       "role": "Software Engineering Intern",
       "org": "Smart Wish",
-      "when": "Apr 2026 to summer 2026",
+      "when": "April 2026 to August 2026",
       "text": "Shipped AI search and AI sticker and text generation to production on a greeting card platform. Researched local model hosting."
     },
     {
       "role": "President",
-      "org": "JMU Competitive Programming Club",
-      "when": "Fall 2026 to now",
-      "text": "Run a club of about 10 members."
+      "org": "Competitive Programming Club at JMU",
+      "when": "August 2025 to now",
+      "text": "Run the club and compete in programming contests and hackathons. Building the next generation of competitive programmers at JMU."
     },
     {
-      "role": "Infrastructure Lead, Executive Board",
-      "org": "JMU Cyber Defense Club",
-      "when": "Current",
-      "text": "Building cost-effective lab infrastructure with the university for a club of about 25."
+      "role": "Executive",
+      "org": "Cyber Defense Club at JMU",
+      "when": "August 2025 to now",
+      "text": "Compete for the club, show up to every meeting, build relationships with members, and make connections at conferences."
     }
   ],
   "skills": [
     {
       "label": "Languages",
-      "items": "Python, Java, JavaScript/TypeScript, Bash, HTML/CSS, C (some), C++ (learning)"
+      "items": "Python, Java, C++, C, JavaScript, TypeScript, SQL, Bash, HTML, CSS"
     },
     {
       "label": "Web",
-      "items": "Flask, React, Node, Tailwind"
+      "items": "React, Node.js, Express, Flask, Tailwind CSS, Vite"
     },
     {
       "label": "Security",
-      "items": "Nmap, Metasploit, Wireshark, Burp Suite, Palo Alto firewalls, iptables"
+      "items": "Penetration testing, vulnerability assessment, web exploitation, incident response, network hardening, Palo Alto firewalls, iptables, AES-GCM encryption, Nmap, Metasploit, Burp Suite, Wireshark"
     },
     {
-      "label": "Infra",
-      "items": "Linux (Kali, Ubuntu, Arch), Docker, Proxmox, VMware, VirtualBox, Git, REST APIs, LLM agents"
+      "label": "Systems",
+      "items": "Linux (Kali, Ubuntu, Arch), Windows 10 and 11, Docker, Proxmox, VMware, VirtualBox"
     },
     {
-      "label": "Human languages",
-      "items": "English, Russian, a little Chinese and German"
+      "label": "DevOps",
+      "items": "Git, GitHub Actions, CI/CD, REST APIs, JSON, Modal, serverless"
+    },
+    {
+      "label": "Testing",
+      "items": "pytest, JUnit, mypy, Ruff, unit testing, debugging"
+    },
+    {
+      "label": "AI",
+      "items": "LLM agents, OpenAI and Anthropic APIs, prompt engineering, local model hosting"
+    },
+    {
+      "label": "Concepts",
+      "items": "Object-oriented programming, data structures and algorithms, Agile and Scrum, SDLC"
+    },
+    {
+      "label": "Certifications",
+      "items": "CompTIA Security+ (expected January 2027)"
+    },
+    {
+      "label": "Languages spoken",
+      "items": "English, Russian (learning)"
     }
   ],
   "focus": "Software engineering and cybersecurity"
