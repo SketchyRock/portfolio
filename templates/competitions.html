@@ -4,7 +4,7 @@
 {% block content %}
 <header class="page-head">
     <h1>Competitions</h1>
-    <p class="lede">{{ competitions|length }} event{{ "" if competitions|length == 1 else "s" }} across capture the flag, red team and blue team competitions, hackathons, programming competitions and conferences. Each links to a write-up.</p>
+    <p class="lede"><strong class="count">{{ competitions|length }}</strong> event{{ "" if competitions|length == 1 else "s" }} across capture the flag, red team and blue team competitions, hackathons, programming competitions and conferences. Each links to a write-up.</p>
 </header>
 <section aria-label="Events">
     {% if competitions %}

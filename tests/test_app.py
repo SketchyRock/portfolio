@@ -48,7 +48,7 @@ def test_competitions_page_lists_names_only(cache):
     cache([dict(POST, slug="new", title="Big CTF", type="retrospective", date="Dec 2026", sort_key="2026-12-05")])
     html = appmod.app.test_client().get("/competitions").get_data(as_text=True)
     assert '<a href="/competitions/new">Big CTF</a>' in html
-    assert "1 event across capture the flag" in html
+    assert '<strong class="count">1</strong> event across capture the flag' in html
 
 
 def test_project_list_public_repos_newest_first(cache):
