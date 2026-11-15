@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | Enzo Hins{% endblock %}
+{% block description %}{{ title }}. My write-up of this competition: what I did, what went wrong, what I'm changing.{% endblock %}
+{% block content %}
+<p class="back"><a class="btn" href="{{ url_for('competitions') }}">← Back to competitions</a></p>
+<article class="prose">
+    {% if post.date %}<p class="label">{{ post.date }}</p>{% endif %}
+    {{ content|safe }}
+</article>
+<p class="back"><a class="btn" href="{{ url_for('competitions') }}">← Back to competitions</a> <a href="{{ post.source_url }}" rel="noopener">View source on GitHub</a></p>
+{% endblock %}
