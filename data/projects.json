@@ -22,7 +22,7 @@
             "OOP"
         ],
         "icon": "music-player.svg",
-        "repo": "https://github.com/SketchyRock/lofi-player"
+        "repo": "https://github.com/SketchyRock/mp3-player"
     },
     {
         "name": "Technical Writeups",
@@ -62,6 +62,6 @@
             "Web Development"
         ],
         "icon": "browser-chrome.svg",
-        "repo": "https://github.com/SketchyRock/portfolio-web"
+        "repo": "https://github.com/SketchyRock/portfolio"
     }
 ]

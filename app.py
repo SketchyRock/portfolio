@@ -28,7 +28,7 @@ def blog():
 @app.route("/blog/<filename>")
 def blog_post(filename):
     path = os.path.join("data/blogs", filename)
-    if not os.path.exists(path):
+    if not filename.endswith(".md") or not os.path.isfile(path):
         abort(404)
 
     with open(path, "r", encoding="UTF-8") as f:
