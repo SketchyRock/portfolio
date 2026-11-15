@@ -1,8 +1,27 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Enzo Hins - Portfolio{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Enzo Hins - Portfolio</title>
+</head>
 
-{% block hero %}
+<body>
+    <main id="top">
+        <header class="main-header">
+            <h1>Enzo Hins</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html#top">Home</a></li>
+                    <li><a href="index.html#about-me">About Me</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+        </header>
+
 <section id="hero" class="hero-section">
     <div class="hero-content">
         <p class="eyebrow">Freshman @ James Madison University</p>
@@ -20,13 +39,11 @@
 
     <div class="cta-container">
         <a href="#about-me" class="cta-button">
-            Learn More About Me <i data-lucide="chevron-down"></i>
+            Learn More About Me ↓
         </a>
     </div>
 </section>
-{% endblock %}
 
-{% block about_me %}
 <section id="about-me">
     <h2 class="section-title">About me</h2>
 
@@ -70,40 +87,37 @@
 
     <div class="button-container">
         <a href="#projects" class="cta-button">
-            View my Projects <i data-lucide="chevron-down"></i>
+            View my Projects ↓
         </a>
     </div>
 </section>
-{% endblock %}
 
-{% block projects %}
-<section id="projects">
-    <h2 class="section-title">Technical Projects</h2>
-    <div class="projects-grid">
-        {% for project in projects %}
-        <a href="{{ project.repo }}" target="_blank" rel="noopener"
-            class="project-card">
-
-            <div class="card-header">
-                <img
-                    src="{{ url_for('static', filename='img/' + project.icon) }}"
-                    alt class="project-icon">
-                <h3>{{ project.name }}</h3>
+        <section id="projects">
+            <h2 class="section-title">Technical Projects</h2>
+            <div class="projects-grid" id="projects-grid">
+                <noscript>Projects are loaded with JavaScript. See <a href="https://github.com/SketchyRock">github.com/SketchyRock</a>.</noscript>
             </div>
+        </section>
 
-            <p class="project-desc">{{ project.description }}</p>
+    </main>
 
-            <div class="tag-container">
-                {% for tech in project.learned %}
-                <span class="tech-tag">{{ tech }}</span>
-                {% endfor %}
-            </div>
+    <footer class="fixed-footer">
+        <nav>
+            <ul>
+                <li><a href="https://github.com/SketchyRock" target="_blank" rel="noopener noreferrer">
+                        <img src="static/img/github.svg" alt="github" class="nav-icon">
+                        GitHub</a></li>
+                <li><a href="mailto:hinsem@dukes.jmu.edu" target="_blank" rel="noopener noreferrer">
+                        <img src="static/img/envelope.svg" alt="envelope" class="nav-icon">
+                        Email</a></li>
+                <li><a href="https://www.linkedin.com/in/enzohins/" target="_blank" rel="noopener noreferrer">
+                        <img src="static/img/linkedin.svg" alt="linkedin" class="nav-icon">
+                        LinkedIn</a></li>
+            </ul>
+        </nav>
+    </footer>
 
-            <span class="repo-cta">
-                View Repository <i data-lucide="github"></i>
-            </span>
-        </a>
-        {% endfor %}
-    </div>
-</section>
-{% endblock %}
+    <script src="static/js/projects.js"></script>
+</body>
+
+</html>

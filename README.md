@@ -1,47 +1,41 @@
 # portfolio
 
-Source for my personal portfolio site, built with Flask. Projects come from a JSON file and blog posts from Markdown files, so adding either does not mean touching the code.
+My personal portfolio site. It is a static frontend: plain HTML, CSS, and a little JavaScript, with nothing to run on a server.
 
 **Live site:** coming soon. I'm moving it to a new domain.
 
 ## How it works
 
-- **Projects.** The homepage cards are rendered from `data/projects.json`.
-- **Blog.** Every `.md` file in `data/blogs/` becomes a post. The file name is turned into the title, so `my-new-post.md` is shown as "My New Post". Prefix the name with a date (`2026-1-30-my-new-post.md`) so posts sort newest first.
-- **Templates.** Jinja2 templates share a `base.html` layout, and the CSS uses variables in `:root` for theming and mobile layouts.
-
-## Stack
-
-Python 3, Flask, Python-Markdown, and Gunicorn for production. The frontend is plain HTML and CSS.
+- **Projects.** `static/js/projects.js` builds the homepage cards from `data/projects.json`.
+- **Blog.** `static/js/blog.js` lists the posts in my [writeups](https://github.com/SketchyRock/writeups) repo using its `index.json`, and `static/js/post.js` fetches and renders one post. Nothing is copied into this repo, so a new write-up shows up as soon as it is on `main` there.
+- **Markdown** is rendered in the browser with a vendored copy of [marked](https://github.com/markedjs/marked) (`static/js/marked.min.js`).
 
 ## Layout
 
 ```text
-├── app.py                # Flask app and routes
-├── data/
-│   ├── blogs/            # Markdown posts
-│   └── projects.json     # Project cards
-├── static/
-│   ├── css/              # Stylesheets
-│   └── img/              # Icons
-├── templates/            # base, index, blog list, blog post
-└── requirements.txt
+├── index.html            # Home: hero, about, projects
+├── blog.html             # Post list
+├── post.html             # One post (post.html?p=2026/some-post.md)
+├── data/projects.json    # Project cards
+└── static/
+    ├── css/styles.css
+    ├── img/              # Icons
+    └── js/               # projects.js, blog.js, post.js, marked.min.js
 ```
 
 ## Running locally
 
+Browsers block `fetch` on `file://` pages, so serve the folder:
+
 ```bash
-git clone https://github.com/SketchyRock/portfolio.git
-cd portfolio
-
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-
-pip install -r requirements.txt
-python app.py
+python3 -m http.server 8000
 ```
 
-The site is served at `http://127.0.0.1:5000`.
+Then open `http://localhost:8000`.
+
+## Deploying
+
+Upload the repo as is to any static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages). There is no build step.
 
 ## Adding a project
 
@@ -57,9 +51,4 @@ Append an object to `data/projects.json`:
 }
 ```
 
-`icon` is a file in `static/img/`. If it is missing, the card shows no icon.
-
-## Roadmap
-
-- Pull posts from the [writeups](https://github.com/SketchyRock/writeups) repo through the GitHub API instead of keeping local copies in `data/blogs/`.
-- Fix the spacing on the blog list page.
+`icon` is a file in `static/img/`.
