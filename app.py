@@ -74,7 +74,9 @@ def rewrite_links(html, post, slugs_by_path):
         if is_relative(href):
             u = urlsplit(href)
             path = resolve(u.path)
-            if path in slugs_by_path:
+            if path == "README.md":
+                href = "/blog"
+            elif path in slugs_by_path:
                 href = "/blog/" + slugs_by_path[path]
             else:
                 href = BLOB + quote(path)
