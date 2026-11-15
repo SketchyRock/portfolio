@@ -1,31 +1,38 @@
 {% extends "base.html" %}
 {% block title %}About | Enzo Hins{% endblock %}
+{% block description %}Background, experience and skills of Enzo Hins, a CS and cybersecurity student at JMU.{% endblock %}
 {% block content %}
-<section class="page-head">
-    <p class="prompt">$ cat about.txt</p>
+<header class="page-head">
     <h1>About</h1>
     <p class="lede">Who I am, what I do, and what I know.</p>
-</section>
-<section id="about">
+</header>
+<section aria-label="Background">
     {% for p in profile.about %}<p>{{ p }}</p>{% endfor %}
-    <blockquote>“{{ profile.quote.text }}”<cite>{{ profile.quote.by }}</cite></blockquote>
+    <blockquote>
+        <p>“{{ profile.quote.text }}”</p>
+        <footer>{{ profile.quote.by }}</footer>
+    </blockquote>
 </section>
-<section id="experience">
-    <h2>experience</h2>
-    {% for e in profile.experience %}
-    <div class="entry">
-        <div class="entry-head">
-            <span><strong>{{ e.role }}</strong>, {{ e.org }}</span>
-            <span class="when">{{ e.when }}</span>
-        </div>
-        <p>{{ e.text }}</p>
+<section aria-labelledby="exp-h">
+    <h2 id="exp-h">Experience</h2>
+    <div class="rows">
+        {% for e in profile.experience %}
+        <article class="row stack">
+            <div class="row-head">
+                <h3>{{ e.role }}, {{ e.org }}</h3>
+                <span class="label">{{ e.when }}</span>
+            </div>
+            <p>{{ e.text }}</p>
+        </article>
+        {% endfor %}
     </div>
-    {% endfor %}
 </section>
-<section id="skills">
-    <h2>skills</h2>
+<section aria-labelledby="skills-h">
+    <h2 id="skills-h">Skills</h2>
     <dl class="skills">
-        {% for s in profile.skills %}<dt>{{ s.label }}</dt><dd>{{ s['items'] }}</dd>{% endfor %}
+        {% for s in profile.skills %}
+        <div class="row"><dt>{{ s.label }}</dt><dd>{{ s['items'] }}</dd></div>
+        {% endfor %}
     </dl>
 </section>
 {% endblock %}

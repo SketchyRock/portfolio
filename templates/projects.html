@@ -1,23 +1,26 @@
 {% extends "base.html" %}
 {% block title %}Projects | Enzo Hins{% endblock %}
+{% block description %}Software and security projects by Enzo Hins. Public repos link to GitHub, private work is described.{% endblock %}
 {% block content %}
-<section class="page-head">
-    <p class="prompt">$ ls projects/</p>
+<header class="page-head">
     <h1>Projects</h1>
-    <p class="lede">Things I built. Private ones are described but not linked.</p>
-</section>
-<section id="projects">
-    <div class="rows">
+    <p class="lede">Public repos come straight from GitHub. Private work is described, not linked.</p>
+</header>
+<section aria-label="Projects">
+    <ul class="rows">
         {% for p in projects %}
-        <div class="row">
-            <span class="when">{% if p.repo %}public{% else %}private{% endif %}</span>
-            <div>
-                {% if p.repo %}<a href="{{ p.repo }}" rel="noopener"><strong>{{ p.name }}</strong></a>{% else %}<strong>{{ p.name }}</strong>{% endif %}
-                <p>{{ p.description }}</p>
-                <p class="tags">{% for t in p.stack %}<span>{{ t }}</span>{% endfor %}</p>
+        <li class="row stack">
+            <div class="row-head">
+                <h2 class="item">{% if p.repo %}<a href="{{ p.repo }}" rel="noopener">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</h2>
+                <span class="label">{{ p.status }}</span>
             </div>
-        </div>
+            <p>{{ p.description }}</p>
+            {% set lang = p.language if p.language and p.language not in p.stack else None %}
+            {% if p.stack or lang or p.updated %}
+            <p class="quiet">{{ p.stack|join(' · ') }}{% if lang or p.updated %}{% if p.stack %}<br>{% endif %}{{ [lang, p.updated]|select|join(' · ') }}{% endif %}</p>
+            {% endif %}
+        </li>
         {% endfor %}
-    </div>
+    </ul>
 </section>
 {% endblock %}

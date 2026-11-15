@@ -1,38 +1,40 @@
 {% extends "base.html" %}
 {% block title %}Enzo Hins | CS and Cybersecurity{% endblock %}
+{% block description %}Enzo Hins, CS and cybersecurity student at James Madison University. Competitions, projects and writeups.{% endblock %}
 
 {% block content %}
 <section class="intro">
-    <p class="prompt">$ whoami</p>
     <h1>{{ profile.name }}</h1>
     <p class="lede">{{ profile.tagline }}</p>
-    <p class="meta">Sophomore at {{ profile.school }} · {{ profile.degree }} · GPA {{ profile.gpa }}</p>
+    <p>{{ profile.intro }}</p>
+    <p class="meta">{{ profile.degree.rstrip('.') }} · GPA {{ profile.gpa }}</p>
     <p class="links">
-        <a href="{{ profile.github }}" rel="noopener">github</a>
-        <a href="{{ profile.linkedin }}" rel="noopener">linkedin</a>
-        <a href="mailto:{{ profile.email }}">email</a>
+        <a href="{{ profile.github }}" rel="noopener">GitHub</a>
+        <a href="{{ profile.linkedin }}" rel="noopener">LinkedIn</a>
+        <a href="mailto:{{ profile.email }}">Email</a>
     </p>
 </section>
 
-<section id="now">
-    <h2>now</h2>
+<section aria-labelledby="now-h">
+    <h2 id="now-h">Now</h2>
     <ul class="plain">
         {% for item in profile.now %}<li>{{ item }}</li>{% endfor %}
     </ul>
 </section>
 
-<section id="explore">
-    <h2>explore</h2>
-    <div class="rows">
-        <div class="row"><a href="{{ url_for('about') }}"><strong>about</strong></a><p>Background, experience and skills.</p></div>
-        <div class="row"><a href="{{ url_for('competitions') }}"><strong>competitions</strong></a><p>{{ competitions|length }} events, from ICPC to MACCDC to CTFs.</p></div>
-        <div class="row"><a href="{{ url_for('projects') }}"><strong>projects</strong></a><p>{{ projects|length }} projects, public and private.</p></div>
-        <div class="row"><a href="{{ url_for('blog') }}"><strong>writeups</strong></a><p>{{ posts|length }} competition retrospectives.</p></div>
-    </div>
+<section aria-labelledby="explore-h">
+    <h2 id="explore-h">Explore</h2>
+    <ul class="rows">
+        <li class="row"><a href="{{ url_for('about') }}">About</a><span class="label">background and skills</span></li>
+        <li class="row"><a href="{{ url_for('competitions') }}">Competitions</a><span class="label">{{ competitions|length }} events</span></li>
+        <li class="row"><a href="{{ url_for('projects') }}">Projects</a><span class="label">{{ projects|length }} listed</span></li>
+        <li class="row"><a href="{{ url_for('blog') }}">Writeups</a><span class="label">{{ posts|length }} retrospectives</span></li>
+        {% if has_photos %}<li class="row"><a href="{{ url_for('photos') }}">Photos</a><span class="label">albums</span></li>{% endif %}
+    </ul>
 </section>
 
-<section id="contact">
-    <h2>contact</h2>
+<section aria-labelledby="contact-h">
+    <h2 id="contact-h">Contact</h2>
     <p>I'm looking for Summer 2027 internships in cybersecurity and software engineering, and I'll relocate. The easiest way to reach me is <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>.</p>
 </section>
 {% endblock %}

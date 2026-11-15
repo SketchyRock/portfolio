@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Not found | Enzo Hins{% endblock %}
+{% block description %}That page does not exist.{% endblock %}
+{% block content %}
+<header class="page-head">
+    <h1>Page not found</h1>
+    <p class="lede">That link doesn't go anywhere. It may have moved, or I may have typed it wrong.</p>
+</header>
+<p><a href="{{ url_for('home') }}">Back to the home page</a></p>
+{% endblock %}

@@ -1,0 +1,56 @@
+[
+ {
+  "name": "Gvoid",
+  "html_url": "https://github.com/SketchyRock/Gvoid",
+  "description": "A sleek, minimalist Deep Work Station featuring a custom Pomodoro timer, integrated ambient soundscapes, and distraction-free focus modes.",
+  "language": "JavaScript",
+  "pushed_at": "2026-03-12T13:39:57Z",
+  "archived": false,
+  "stargazers_count": 2
+ },
+ {
+  "name": "mp3-player",
+  "html_url": "https://github.com/SketchyRock/mp3-player",
+  "description": "A minimalist Python music player that automatically streams MP3s from a local directory for a focused lofi experience.",
+  "language": "Python",
+  "pushed_at": "2026-02-13T01:56:09Z",
+  "archived": true,
+  "stargazers_count": 0
+ },
+ {
+  "name": "password-manager",
+  "html_url": "https://github.com/SketchyRock/password-manager",
+  "description": "A lightweight terminal-based password manager for local credential storage using Java and Base64 encoding.",
+  "language": "Java",
+  "pushed_at": "2026-02-13T01:58:07Z",
+  "archived": true,
+  "stargazers_count": 0
+ },
+ {
+  "name": "portfolio-web",
+  "html_url": "https://github.com/SketchyRock/portfolio-web",
+  "description": "A personal portfolio website built with Flask to showcase my projects and skills in cybersecurity and programming. Deployed using Render.",
+  "language": "CSS",
+  "pushed_at": "2026-02-23T21:07:02Z",
+  "archived": false,
+  "stargazers_count": 0
+ },
+ {
+  "name": "scoundrel-game",
+  "html_url": "https://github.com/SketchyRock/scoundrel-game",
+  "description": "Scoundrel is a terminal-based Python implementation of the classic solo dungeon-crawling card game.",
+  "language": "Python",
+  "pushed_at": "2026-01-24T20:10:41Z",
+  "archived": true,
+  "stargazers_count": 0
+ },
+ {
+  "name": "writeups",
+  "html_url": "https://github.com/SketchyRock/writeups",
+  "description": "A centralized collection of technical resources, custom scripts, and performance retrospectives from my cyber defense and programming competitions.",
+  "language": null,
+  "pushed_at": "2026-02-23T21:02:58Z",
+  "archived": false,
+  "stargazers_count": 0
+ }
+]

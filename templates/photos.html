@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Photos | Enzo Hins{% endblock %}
+{% block description %}Photos by Enzo Hins.{% endblock %}
+{% block main_class %}wide{% endblock %}
+{% block content %}
+<header class="page-head narrow">
+    <h1>Photos</h1>
+    <p class="lede">A few photos I like.</p>
+</header>
+{% if albums %}
+{% for album in albums %}
+<section class="album" aria-labelledby="album-{{ loop.index }}">
+    <h2 id="album-{{ loop.index }}" class="narrow">{{ album.name }}</h2>
+    <div class="grid">
+        {% for ph in album.photos %}
+        <figure>
+            <img src="{{ ph.src }}" srcset="{{ ph.src }} 800w, {{ ph.src_large }} 1600w" sizes="(max-width: 40rem) 50vw, 33vw" width="{{ ph.width }}" height="{{ ph.height }}" alt="{{ ph.alt or ph.caption or '' }}" loading="lazy" decoding="async">
+            {% if ph.caption %}<figcaption>{{ ph.caption }}</figcaption>{% endif %}
+        </figure>
+        {% endfor %}
+    </div>
+</section>
+{% endfor %}
+{% else %}
+<p class="narrow">No photos yet. I'll add some soon.</p>
+{% endif %}
+{% endblock %}

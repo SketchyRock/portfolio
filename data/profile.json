@@ -1,17 +1,22 @@
 {
   "name": "Enzo Hins",
   "handle": "SketchyRock",
-  "tagline": "I break things to learn how to defend them, and I build things because I like building.",
+  "tagline": "CS student at JMU focused on cybersecurity. I compete a lot, build a lot, and write down what went wrong.",
+  "intro": "I'm a sophomore at James Madison University. I enter around ten competitions a year, across blue team, red team and CTFs, and programming contests, and I'm looking for Summer 2027 internships in cybersecurity and software engineering.",
   "school": "James Madison University",
-  "degree": "B.S. Computer Science, cybersecurity focus. Minors in Mathematics and Russian. May 2029.",
+  "degree": "B.S. Computer Science, cybersecurity focus. Russian minor. May 2029.",
   "gpa": "3.97",
   "email": "hinsem@dukes.jmu.edu",
   "github": "https://github.com/SketchyRock",
   "linkedin": "https://www.linkedin.com/in/enzohins/",
   "about": [
-    "I'm a sophomore at JMU studying computer science. I started on the defense side, running a Palo Alto firewall at MACCDC, and I keep getting pulled toward offense. Right now I lean red team, but I'm just as happy shipping a product.",
-    "I learn by entering competitions and writing down what went wrong afterward. The retrospectives under Writeups are the honest version, including the Splunk box we forgot to own.",
-    "Long term I want to do cyber work for national security, in defense or intelligence. Off the keyboard I train Brazilian jiu-jitsu, study Russian, and care about getting things right more than getting them fast."
+    "I'm a sophomore at JMU studying computer science with a cybersecurity focus. I'm minoring in Russian and taking the advanced math courses because I like them. Most of my time goes to competitions, club work and projects.",
+    "I started on the defense side, running a Palo Alto firewall for MACCDC, and I keep getting pulled toward offense. I like both. Defense is what keeps systems standing, and red teaming is how you find out whether it does. Right now I lean red team, but I'm just as happy shipping a product.",
+    "I use AI a lot, and on purpose. I work with agentic tools every day, I've studied hosting models locally, and I built an agent loop that solved the VMI CyberFusion challenges well inside the time limit. I read what these tools write and I know what I'm shipping. They let me build more than I could alone. They don't replace knowing how it works. This site is a small example: I don't enjoy front-end work, so I directed AI to build it and made the design calls myself.",
+    "I like math both ways, the theory for its own sake and the useful kind: calculus, linear algebra, geometry. It's also why machine learning interests me. The math is the interesting part, and the applications are real. At CCI I work on the security of an ML system that detects impairment from eye movements.",
+    "I've lived in Frankfurt, Germany; Moscow, Russia; and Beijing, China, and I'm now minoring in Russian. I speak English and Russian, with a little Chinese and German.",
+    "Long term I want to work on national security as a cybersecurity or software engineer, or in AI and ML. I'm proud of this country and I want to help protect its people. I'm open to private and public sector work along the way.",
+    "Off the keyboard I skateboard and train Brazilian jiu-jitsu."
   ],
   "quote": {
     "text": "The things that we love tell us what we are.",
@@ -20,7 +25,7 @@
   "now": [
     "Researching security for HGN-Sense at the Commonwealth Cyber Initiative",
     "Leading infrastructure for the JMU Cyber Defense Club and running the Competitive Programming Club",
-    "Working through a 12-week C++ and reverse engineering plan (hexdump, PE/ELF parsing, Ghidra, pwn.college)",
+    "Teaching myself C++ and reverse engineering (hexdump, PE/ELF parsing, Ghidra, pwn.college)",
     "Studying for Security+ over winter break"
   ],
   "experience": [
@@ -50,7 +55,7 @@
     }
   ],
   "skills": [
-    {"label": "Languages", "items": "Python, Java, JavaScript/TypeScript, Bash, HTML/CSS, C++ (learning)"},
+    {"label": "Languages", "items": "Python, Java, JavaScript/TypeScript, Bash, HTML/CSS, C (some), C++ (learning)"},
     {"label": "Web", "items": "Flask, React, Node, Tailwind"},
     {"label": "Security", "items": "Nmap, Metasploit, Wireshark, Burp Suite, Palo Alto firewalls, iptables"},
     {"label": "Infra", "items": "Linux (Kali, Ubuntu, Arch), Docker, Proxmox, VMware, VirtualBox, Git, REST APIs, LLM agents"},
