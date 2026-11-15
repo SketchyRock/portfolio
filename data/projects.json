@@ -1,7 +1,7 @@
 [
  {
   "name": "CTF orchestrator (VMI CyberFusion)",
-  "description": "An AI agent loop that proposes a command, runs it in a throwaway Kali container, reads the output and tries again. Flask and Socket.IO backend, ephemeral Docker containers. It solved the VMI challenges well inside the time limit.",
+  "description": "AI agent loop that runs commands in throwaway Kali containers and iterates on the output. Built for VMI CyberFusion (1st place).",
   "stack": [
    "Python",
    "Flask",
@@ -22,7 +22,7 @@
  },
  {
   "name": "Barber booking site",
-  "description": "A booking site for a friend's barber business. He used it for a while before moving to another tool.",
+  "description": "Booking site for a friend's barber business.",
   "stack": [
    "React 19",
    "Vite",

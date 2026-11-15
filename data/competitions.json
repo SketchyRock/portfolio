@@ -1,9 +1,9 @@
 [
-  {"date": "Nov 2026", "type": "ctf", "event": "NCL Cyber Skyline, Fall 2026", "result": "57th of 3,041, every challenge solved", "note": "Team event. AI did most of the solving and our team operated it."},
-  {"date": "Nov 2026", "type": "programming", "event": "ICPC Mid-Atlantic Regional", "result": "1st at the JMU site, 6 problems", "note": "Team Industrial Revolution. Top 11 in the region."},
-  {"date": "Apr 2026", "type": "ctf", "event": "Summit CTF", "result": "Top 10", "note": "Initial access and privilege escalation across a simulated multi-layer airport network. Web exploitation was my lane.", "post": "summit-ctf"},
-  {"date": "Mar 2026", "type": "blue", "event": "MACCDC Regionals", "result": "Competed, blue team", "note": "Team of 8. Palo Alto firewall plus writing up incident response. We did not place well.", "post": "maccdc-regionals"},
-  {"date": "Feb 2026", "type": "ctf", "event": "VMI CyberFusion (Microsoft CTF)", "result": "1st place", "note": "Built an AI-assisted CTF orchestrator for it. Every challenge was done within 2 of the 4 hours.", "post": "vmi-cyber-fusion", "also": ["vmi-cyber-fusion-platform"]},
-  {"date": "Jan 2026", "type": "blue", "event": "MACCDC Qualifiers", "result": "Qualified", "note": "Palo Alto firewall admin plus injects support. Learned the platform in under 30 days.", "post": "maccdc-qualifiers"},
-  {"date": "Nov 2025", "type": "programming", "event": "ICPC Mid-Atlantic Regional", "result": "5 problems, about 50th percentile", "note": "My first programming contest. Solo-solved two problems.", "post": "icpc"}
+  {"date": "Nov 2026", "type": "ctf", "event": "NCL Cyber Skyline, Fall 2026", "result": "57th of 3,041, every challenge solved", "note": "Team event, AI-assisted."},
+  {"date": "Nov 2026", "type": "programming", "event": "ICPC Mid-Atlantic Regional", "result": "Top 11 in the region, 1st at the JMU site", "note": "6 problems solved."},
+  {"date": "Apr 2026", "type": "ctf", "event": "Summit CTF", "result": "Top 10", "note": "Web exploitation, initial access and privilege escalation on a simulated airport network.", "post": "summit-ctf"},
+  {"date": "Mar 2026", "type": "blue", "event": "MACCDC Regionals", "result": "Competed, blue team", "note": "Team of 8. Palo Alto firewall and incident response reports.", "post": "maccdc-regionals"},
+  {"date": "Feb 2026", "type": "ctf", "event": "VMI CyberFusion (Microsoft CTF)", "result": "1st place", "note": "Built an AI-assisted CTF orchestrator. Every challenge solved in 2 of 4 hours.", "post": "vmi-cyber-fusion", "also": ["vmi-cyber-fusion-platform"]},
+  {"date": "Jan 2026", "type": "blue", "event": "MACCDC Qualifiers", "result": "Qualified", "note": "Palo Alto firewall admin and injects. Learned the platform in under 30 days.", "post": "maccdc-qualifiers"},
+  {"date": "Nov 2025", "type": "programming", "event": "ICPC Mid-Atlantic Regional", "result": "5 problems", "note": "Solved two on my own.", "post": "icpc"}
 ]
