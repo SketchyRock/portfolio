@@ -60,27 +60,27 @@
   "skills": [
     {
       "label": "Languages",
-      "items": "Python, Java, C++, C, Rust, JavaScript, TypeScript, SQL, Bash, PowerShell, HTML/CSS"
+      "items": "Python, Java, C++, C, JavaScript, TypeScript, SQL, Bash, PowerShell, HTML/CSS"
     },
     {
       "label": "Software",
-      "items": "React, Node.js, Express, Flask, Tauri, Streamlit, Tailwind, Vite, Git, GitHub Actions, CI/CD, Docker, REST APIs, JSON, AWS S3, Modal, serverless"
+      "items": "React, Node.js, Express, Flask, Tailwind, Vite, Git, GitHub Actions, CI/CD, Docker, REST APIs, JSON, AWS (EC2, S3, SageMaker), Modal, serverless"
     },
     {
       "label": "Testing",
-      "items": "Unit, integration and end-to-end tests, adversarial security tests, black-box tests from specs, automated screenshot checks in headless browsers, manual test plans; pytest, JUnit, Jasmine, cargo test, mypy, Ruff"
+      "items": "Unit, integration and end-to-end tests, adversarial security tests, black-box tests from specs, automated screenshot checks in headless browsers, manual test plans; pytest, JUnit, Jasmine, mypy, Ruff"
     },
     {
       "label": "Security",
-      "items": "Pen testing, vulnerability assessment, web exploitation, incident response, threat modeling, network hardening, Palo Alto, iptables, AES-GCM, Velociraptor, Splunk, Active Directory, Nmap, Metasploit, Burp Suite, Wireshark, Security+ (expected Jan 2027)"
+      "items": "Pen testing, vulnerability assessment, web exploitation, incident response, threat modeling, network hardening, Palo Alto, iptables, AES-GCM, Splunk, Nmap, Metasploit, Burp Suite, Wireshark, Security+ (expected Jan 2027)"
     },
     {
       "label": "Systems",
-      "items": "Linux (Kali, Ubuntu, Arch), Windows 10/11, VyOS, Proxmox, VMware, VirtualBox"
+      "items": "Linux (Kali, Ubuntu, Arch), Windows 10/11, Proxmox, VMware, VirtualBox"
     },
     {
-      "label": "AI and ML",
-      "items": "Agentic coding, multi-agent orchestration, custom agent skills, subagents, hooks and MCP servers, LLM agents, OpenAI, Anthropic and Gemini APIs, prompt engineering, local model hosting, OpenCV, MediaPipe, scikit-learn, PyTorch, NumPy, pandas"
+      "label": "AI",
+      "items": "Agentic coding, multi-agent orchestration, custom agent skills, subagents, hooks and MCP servers, LLM agents, OpenAI, Anthropic and Gemini APIs, prompt engineering, local model hosting"
     },
     {
       "label": "Practices",
