@@ -12,9 +12,9 @@
     "Computer science sophomore at JMU, focusing on software engineering and cybersecurity. Most of my time goes to competitions, club work, projects and research.",
     "I fill the role the team needs and learn what the job takes. On defense that has meant administering a Palo Alto firewall and hardening Linux and Windows systems.",
     "I'm highly proficient with AI tools. I understand how they work, what they do well, and how to get the best results from them. For VMI CyberFusion I built an AI-assisted CTF orchestrator that solved the Microsoft CTF challenges early in the competition, ahead of every other team. My partner and I placed first and second.",
-    "I enjoy math, especially calculus and linear algebra, which is what draws me to machine learning, AI and the theory behind them. I also read the classics, psychology and philosophy, and follow politics, history and international conflict.",
+    "I love math, and it's what leads me into machine learning, AI and the theory behind them. I also like reading (classics, psychology, philosophy, politics, history, and fantasy, especially Forgotten Realms).",
     "I've lived in Moscow, Russia; Beijing, China; and Frankfurt, Germany.",
-    "I have a strong drive to serve my country with my skills in software engineering or cybersecurity. I also find research and private sector work fulfilling.",
+    "I have a strong drive to serve the United States of America with my skills in software engineering or cybersecurity. I also find research and private sector work fulfilling.",
     "Outside of academics: skateboarding, weightlifting, Brazilian jiu-jitsu, Old School RuneScape, and automating things with AI."
   ],
   "now": [
@@ -54,48 +54,36 @@
       "role": "Executive",
       "org": "Cyber Defense Club at JMU",
       "when": "August 2025 to now",
-      "text": "Compete for the club, show up to every meeting, build relationships with members, and make connections at conferences."
+      "text": "Compete for the club, network and build relationships with members, and assist the executive board."
     }
   ],
   "skills": [
     {
       "label": "Languages",
-      "items": "Python, Java, C++, C, JavaScript, TypeScript, SQL, Bash, HTML, CSS"
+      "items": "Python, Java, C++, C, JavaScript, TypeScript, SQL, Bash, HTML/CSS"
     },
     {
-      "label": "Web",
-      "items": "React, Node.js, Express, Flask, Tailwind CSS, Vite"
+      "label": "Software",
+      "items": "React, Node.js, Express, Flask, Tailwind, Vite, Git, GitHub Actions, CI/CD, Docker, REST APIs, JSON, Modal, serverless, pytest, JUnit, mypy, Ruff"
     },
     {
       "label": "Security",
-      "items": "Penetration testing, vulnerability assessment, web exploitation, incident response, network hardening, Palo Alto firewalls, iptables, AES-GCM encryption, Nmap, Metasploit, Burp Suite, Wireshark"
+      "items": "Pen testing, vulnerability assessment, web exploitation, incident response, network hardening, Palo Alto, iptables, AES-GCM, Nmap, Metasploit, Burp Suite, Wireshark, Security+ (expected Jan 2027)"
     },
     {
       "label": "Systems",
-      "items": "Linux (Kali, Ubuntu, Arch), Windows 10 and 11, Docker, Proxmox, VMware, VirtualBox"
-    },
-    {
-      "label": "DevOps",
-      "items": "Git, GitHub Actions, CI/CD, REST APIs, JSON, Modal, serverless"
-    },
-    {
-      "label": "Testing",
-      "items": "pytest, JUnit, mypy, Ruff, unit testing, debugging"
+      "items": "Linux (Kali, Ubuntu, Arch), Windows 10/11, Proxmox, VMware, VirtualBox"
     },
     {
       "label": "AI",
       "items": "LLM agents, OpenAI and Anthropic APIs, prompt engineering, local model hosting"
     },
     {
-      "label": "Concepts",
-      "items": "Object-oriented programming, data structures and algorithms, Agile and Scrum, SDLC"
+      "label": "Practices",
+      "items": "OOP, data structures and algorithms, Agile/Scrum, SDLC, unit testing, debugging"
     },
     {
-      "label": "Certifications",
-      "items": "CompTIA Security+ (expected January 2027)"
-    },
-    {
-      "label": "Languages spoken",
+      "label": "Spoken",
       "items": "English, Russian (learning)"
     }
   ],

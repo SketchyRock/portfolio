@@ -163,6 +163,8 @@ section { margin-top: 3rem; }
 .skills { margin: 0; }
 .skills dt { color: var(--muted); font-size: 0.8125rem; }
 .skills dd { margin: 0; }
+.skills .row { padding-block: 0.5rem; }
+.skills dd { font-size: 0.8125rem; }
 
 blockquote { margin: 2rem 0; padding: 0 0 0 1rem; border-left: 2px solid var(--line); }
 blockquote p { margin: 0 0 0.25rem; color: var(--strong); }
