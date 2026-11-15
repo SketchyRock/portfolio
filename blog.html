@@ -4,53 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="static/css/styles.css">
+    <title>Enzo Hins - Blog</title>
 </head>
 
-<div id="top"></div>
-
-
 <body>
-    <main>
+    <main id="top">
         <header class="main-header">
             <h1>Enzo Hins</h1>
             <nav>
                 <ul>
-                    <li><a href="/#top">Home</a></li>
-                    <li><a href="/#about-me">About Me</a></li>
-                    <li><a href="/#projects">Projects</a></li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="index.html#top">Home</a></li>
+                    <li><a href="index.html#about-me">About Me</a></li>
+                    <li><a href="index.html#projects">Projects</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                 </ul>
             </nav>
         </header>
 
-        {% block hero %}{% endblock %}
-
-        {% block about_me %}{% endblock %}
-
-        {% block projects %}{% endblock %}
+        <section>
+            <h2 class="section-title">Blog Posts:</h2>
+            <div class="blog-list" id="blog-list">
+                <p>Loading posts...</p>
+            </div>
+        </section>
 
     </main>
-
-
 
     <footer class="fixed-footer">
         <nav>
             <ul>
                 <li><a href="https://github.com/SketchyRock" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ url_for('static', filename='img/github.svg') }}" alt="github" class="nav-icon">
+                        <img src="static/img/github.svg" alt="github" class="nav-icon">
                         GitHub</a></li>
                 <li><a href="mailto:hinsem@dukes.jmu.edu" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ url_for('static', filename='img/envelope.svg') }}" alt="envelope" class="nav-icon">
+                        <img src="static/img/envelope.svg" alt="envelope" class="nav-icon">
                         Email</a></li>
                 <li><a href="https://www.linkedin.com/in/enzohins/" target="_blank" rel="noopener noreferrer">
-                        <img src="{{ url_for('static', filename='img/linkedin.svg') }}" alt="linkedin" class="nav-icon">
+                        <img src="static/img/linkedin.svg" alt="linkedin" class="nav-icon">
                         LinkedIn</a></li>
             </ul>
         </nav>
     </footer>
 
+    <script src="static/js/blog.js"></script>
 </body>
 
 </html>

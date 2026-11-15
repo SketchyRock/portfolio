@@ -1,88 +1,54 @@
-# Personal Portfolio & Blog - Enzo Hins
+# portfolio
 
-This repository contains the source code for my personal portfolio website. Built with **Python** and **Flask**, this application serves as a central hub to showcase my work in Computer Science and Cyber Security, as well as a platform for my technical writing.
+My personal portfolio site. It is a static frontend: plain HTML, CSS, and a little JavaScript, with nothing to run on a server.
 
-## Overview
+**Live site:** coming soon. I'm moving it to a new domain.
 
-Unlike a static HTML site, this project uses a lightweight dynamic backend to manage content efficiently. It features a custom-built file-based CMS (Content Management System) that allows me to write blog posts in Markdown and update projects via JSON without altering the codebase.
+## How it works
 
-### Key Features
-* **Dynamic Project Loading:** Project cards on the homepage are rendered dynamically from a `projects.json` file, making it easy to scale the portfolio.
-* **Markdown Blog Engine:** A custom implementation that parses local `.md` files into HTML, allowing for seamless article publishing.
-* **Responsive Design:** Custom CSS using CSS variables (`:root`) for easy theming and mobile responsiveness.
-* **Jinja2 Templating:** Modular HTML structure using class inheritance (`base.html`).
+- **Projects.** `static/js/projects.js` builds the homepage cards from `data/projects.json`.
+- **Blog.** `static/js/blog.js` lists the posts in my [writeups](https://github.com/SketchyRock/writeups) repo using its `index.json`, and `static/js/post.js` fetches and renders one post. Nothing is copied into this repo, so a new write-up shows up as soon as it is on `main` there.
+- **Markdown** is rendered in the browser with a vendored copy of [marked](https://github.com/markedjs/marked) (`static/js/marked.min.js`).
 
-## Tech Stack
-
-* **Backend:** Python 3, Flask
-* **Server:** Gunicorn (for production)
-* **Frontend:** HTML5, CSS3, Jinja2
-* **Utilities:** Python-Markdown (for text parsing)
-
-## Project Structure
+## Layout
 
 ```text
-├── app.py                # Main Flask application logic and routing
-├── data/
-│   ├── blogs/            # Markdown files (.md) for blog posts
-│   └── projects.json     # Data source for the projects section
-├── static/
-│   ├── css/              # Custom stylesheets
-│   └── img/              # Assets and icons
-├── templates/            # Jinja2 HTML templates (base, index, blog, etc.)
-└── requirements.txt      # Python dependencies
+├── index.html            # Home: hero, about, projects
+├── blog.html             # Post list
+├── post.html             # One post (post.html?p=2026/some-post.md)
+├── data/projects.json    # Project cards
+└── static/
+    ├── css/styles.css
+    ├── img/              # Icons
+    └── js/               # projects.js, blog.js, post.js, marked.min.js
 ```
 
-## Local Development
+## Running locally
 
-To run this project locally on your machine:
+Browsers block `fetch` on `file://` pages, so serve the folder:
 
-1.  **Clone the repository**
-    ```bash
-    git clone [https://github.com/SketchyRock/portfolio-web.git](https://github.com/SketchyRock/portfolio-web.git)
-    cd portfolio-web
-    ```
+```bash
+python3 -m http.server 8000
+```
 
-2.  **Create a Virtual Environment (Optional but recommended)**
-    ```bash
-    python -m venv venv
-    # Windows:
-    venv\Scripts\activate
-    # Mac/Linux:
-    source venv/bin/activate
-    ```
+Then open `http://localhost:8000`.
 
-3.  **Install Dependencies**
-    ```bash
-    pip install -r requirements.txt
-    ```
+## Deploying
 
-4.  **Run the Application**
-    ```bash
-    python app.py
-    ```
-    The site will be available at `http://127.0.0.1:5000`.
+Upload the repo as is to any static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages). There is no build step.
 
-## Content Management
+## Adding a project
 
-### Adding a New Project
-To add a project to the homepage, navigate to `data/projects.json` and append a new object:
+Append an object to `data/projects.json`:
+
 ```json
 {
     "name": "Project Name",
-    "description": "Brief description...",
-    "icon": "icon-name.svg", # If not no icon or words will appear
+    "description": "One or two sentences.",
+    "icon": "icon-name.svg",
     "learned": ["Skill 1", "Skill 2"],
-    "repo": "[https://github.com/](https://github.com/)..." # where ever you wish the project to take the user to
+    "repo": "https://github.com/SketchyRock/project-name"
 }
 ```
 
-## Publishing a Blog Post
-Simply drop a **.md** file into the **data/blogs/** folder. The file name will be automatically parsed into the title (e.g., my-new-post.md becomes "My New Post").
-(Preferably include data before name "1-30-2020").
-
----
-
-# TODO:
-* implement github api pull for autmatic blog posts
-* add more blog posts and potentially fix the spacing on blog page
+`icon` is a file in `static/img/`.
