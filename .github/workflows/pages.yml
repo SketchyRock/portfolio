@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "17 9 * * *"
   workflow_dispatch:
 
 permissions:
@@ -29,7 +31,8 @@ jobs:
           # Project site lives at /portfolio/. After attaching a custom domain, set the
           # repository variable SITE_BASE to "/" so assets resolve from the root.
           SITE_BASE: ${{ vars.SITE_BASE || '/portfolio' }}
-        run: python build.py --offline
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python build.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

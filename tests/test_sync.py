@@ -89,3 +89,19 @@ def test_clean_repos_drops_forks_and_hidden():
            {"name": "keep", "html_url": "u", "language": "Go"}]
     out = sync.clean_repos(raw, ["sketchyrock"])
     assert [r["name"] for r in out] == ["keep"]
+
+
+def test_front_matter_drives_title_date_and_type():
+    text = '---\ntitle: "Demo Event"\ntype: "retrospective"\ndate: 2026-02\n---\n\n# Demo Event\n\nBody.\n'
+    meta, body = sync.split_front_matter(text)
+    assert meta["type"] == "retrospective" and body.lstrip().startswith("# Demo Event")
+    post = sync.build_writeup("2026/demo.md", "demo", text, [])
+    assert (post["title"], post["date"], post["sort_key"]) == ("Demo Event", "Feb 2026", "2026-02-01")
+    assert "type:" not in post["markdown"]
+
+
+def test_types_filter_skips_other_documents():
+    tree = [{"type": "blob", "path": "2026/a.md"}, {"type": "blob", "path": "2026/b.md"}]
+    texts = {"2026/a.md": "---\ntype: retrospective\n---\n# A\n", "2026/b.md": "---\ntype: reference\n---\n# B\n"}
+    out = sync.build_writeups(tree, texts.__getitem__, ["20??/*.md"], [], types=["retrospective"])
+    assert [p["slug"] for p in out] == ["a"]
