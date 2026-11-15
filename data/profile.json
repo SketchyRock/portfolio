@@ -14,7 +14,7 @@
     "I'm highly proficient with AI tools. I understand how they work, what they do well, and how to get the best results from them. For VMI CyberFusion I built an AI-assisted CTF orchestrator that solved the Microsoft CTF challenges early in the competition, ahead of every other team. My partner and I placed first and second.",
     "I love math, and it's what leads me into machine learning, AI and the theory behind them. I also like reading (classics, psychology, philosophy, politics, history, and fantasy, especially Forgotten Realms).",
     "I've lived in Moscow, Russia; Beijing, China; and Frankfurt, Germany.",
-    "I have a strong drive to serve the United States of America with my skills in software engineering or cybersecurity. I also find research and private sector work fulfilling.",
+    "I have a strong drive to serve my country (USA) with my skills in software engineering and cybersecurity. I also find research and private sector work fulfilling.",
     "Outside of academics: skateboarding, weightlifting, Brazilian jiu-jitsu, Old School RuneScape, and automating things with AI."
   ],
   "now": [
@@ -60,27 +60,31 @@
   "skills": [
     {
       "label": "Languages",
-      "items": "Python, Java, C++, C, JavaScript, TypeScript, SQL, Bash, HTML/CSS"
+      "items": "Python, Java, C++, C, Rust, JavaScript, TypeScript, SQL, Bash, PowerShell, HTML/CSS"
     },
     {
       "label": "Software",
-      "items": "React, Node.js, Express, Flask, Tailwind, Vite, Git, GitHub Actions, CI/CD, Docker, REST APIs, JSON, Modal, serverless, pytest, JUnit, mypy, Ruff"
+      "items": "React, Node.js, Express, Flask, Tauri, Streamlit, Tailwind, Vite, Git, GitHub Actions, CI/CD, Docker, REST APIs, JSON, AWS S3, Modal, serverless"
+    },
+    {
+      "label": "Testing",
+      "items": "Unit, integration and end-to-end tests, adversarial security tests, black-box tests from specs, automated screenshot checks in headless browsers, manual test plans; pytest, JUnit, Jasmine, cargo test, mypy, Ruff"
     },
     {
       "label": "Security",
-      "items": "Pen testing, vulnerability assessment, web exploitation, incident response, network hardening, Palo Alto, iptables, AES-GCM, Nmap, Metasploit, Burp Suite, Wireshark, Security+ (expected Jan 2027)"
+      "items": "Pen testing, vulnerability assessment, web exploitation, incident response, threat modeling, network hardening, Palo Alto, iptables, AES-GCM, Velociraptor, Splunk, Active Directory, Nmap, Metasploit, Burp Suite, Wireshark, Security+ (expected Jan 2027)"
     },
     {
       "label": "Systems",
-      "items": "Linux (Kali, Ubuntu, Arch), Windows 10/11, Proxmox, VMware, VirtualBox"
+      "items": "Linux (Kali, Ubuntu, Arch), Windows 10/11, VyOS, Proxmox, VMware, VirtualBox"
     },
     {
-      "label": "AI",
-      "items": "LLM agents, OpenAI and Anthropic APIs, prompt engineering, local model hosting"
+      "label": "AI and ML",
+      "items": "Agentic coding, multi-agent orchestration, custom agent skills, subagents, hooks and MCP servers, LLM agents, OpenAI, Anthropic and Gemini APIs, prompt engineering, local model hosting, OpenCV, MediaPipe, scikit-learn, PyTorch, NumPy, pandas"
     },
     {
       "label": "Practices",
-      "items": "OOP, data structures and algorithms, Agile/Scrum, SDLC, unit testing, debugging"
+      "items": "OOP, data structures and algorithms, Agile/Scrum, SDLC, debugging"
     },
     {
       "label": "Spoken",
