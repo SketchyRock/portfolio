@@ -1,5 +1,7 @@
 """Pull public repos and allowlisted writeups from GitHub into data/cache/.
 
+Writeups are picked by the `type` in their YAML front matter (data/github.json `types`).
+
 Stdlib only. Run at build time. Failures keep the existing cache.
 """
 import datetime
@@ -25,7 +27,8 @@ class SyncError(Exception):
 def config():
     with open(os.path.join(DATA, "github.json"), encoding="UTF-8") as f:
         cfg = json.load(f)
-    cfg.setdefault("include", ["**/*retrospective*.md", "**/*overview*.md"])
+    cfg.setdefault("include", ["20??/*.md"])
+    cfg.setdefault("types", ["retrospective", "project-writeup"])
     cfg.setdefault("hide_repos", [])
     return cfg
 
@@ -92,6 +95,8 @@ def sync_repos():
     cfg = config()
     url = f"https://api.github.com/users/{cfg['user']}/repos?per_page=100&type=owner"
     repos = clean_repos(fetch_json(url), cfg["hide_repos"])
+    if not repos and read_cache("repos.json"):
+        raise SyncError("no repos returned; refusing to replace a non-empty cache")
     write_cache("repos.json", repos)
     return repos
 
@@ -149,6 +154,19 @@ def assign_slugs(paths):
     return out
 
 
+def split_front_matter(text):
+    """Return (meta, body). Reads flat `key: value` lines of a leading YAML block; no nesting or lists."""
+    m = re.match(r"---\s*\n(.*?)\n---\s*\n?", text, re.S)
+    if not m:
+        return {}, text
+    meta = {}
+    for line in m.group(1).splitlines():
+        k, sep, v = line.partition(":")
+        if sep and re.fullmatch(r"[A-Za-z_][\w-]*", k.strip()):
+            meta[k.strip().lower()] = v.strip().strip("\"'")
+    return meta, text[m.end():]
+
+
 def get_title(text, path):
     for line in text.splitlines():
         if line.startswith("# "):
@@ -172,6 +190,19 @@ def parse_date(text):
     return raw, "", ""
 
 
+def parse_iso_date(raw):
+    """'2026-02-08' or '2026-02' -> (display, sort_key), else ('', '')."""
+    m = re.fullmatch(r"(\d{4})-(\d{2})(?:-(\d{2}))?", (raw or "").strip())
+    if not m:
+        return "", ""
+    year, month, day = int(m.group(1)), int(m.group(2)), int(m.group(3) or 1)
+    try:
+        dt = datetime.date(year, month, day)
+    except ValueError:
+        return "", ""
+    return f"{MONTHS[dt.month - 1]} {dt.year}", dt.isoformat()
+
+
 def parse_month_year(s):
     """'Jan 2026' -> '2026-01-01', else ''."""
     m = re.match(r"([A-Za-z]{3})[a-z]*\.?\s+(\d{4})$", (s or "").strip())
@@ -181,7 +212,11 @@ def parse_month_year(s):
 
 
 def build_writeup(path, slug, text, competitions):
+    meta, text = split_front_matter(text)
     raw, display, key = parse_date(text)
+    if not key and meta.get("date"):
+        raw = meta["date"]
+        display, key = parse_iso_date(raw)
     if not key:
         for c in competitions:
             if c.get("post") == slug and c.get("date"):
@@ -191,7 +226,7 @@ def build_writeup(path, slug, text, competitions):
     return {
         "slug": slug,
         "path": path,
-        "title": get_title(text, path),
+        "title": get_title(text, path) if not meta.get("title") else meta["title"],
         "date_raw": raw,
         "date": display,
         "sort_key": key,
@@ -201,13 +236,15 @@ def build_writeup(path, slug, text, competitions):
     }
 
 
-def build_writeups(tree, fetch_text, include, competitions):
+def build_writeups(tree, fetch_text, include, competitions, types=None):
     paths = sorted(t["path"] for t in tree
                    if t.get("type") == "blob" and is_allowed(t["path"], include))
     texts = {}
     for p in paths:
         text = fetch_text(p)
         if not text.strip() or is_draft(text):
+            continue
+        if types is not None and split_front_matter(text)[0].get("type") not in types:
             continue
         texts[p] = text
     slugs = assign_slugs(list(texts))
@@ -227,7 +264,9 @@ def sync_writeups():
         quoted = urllib.request.quote(path)
         return fetch(f"https://raw.githubusercontent.com/{repo}/HEAD/{quoted}").decode("utf-8")
 
-    posts = build_writeups(tree.get("tree", []), fetch_text, cfg["include"], comps)
+    posts = build_writeups(tree.get("tree", []), fetch_text, cfg["include"], comps, cfg["types"])
+    if not posts and read_cache("writeups.json"):
+        raise SyncError("no writeups matched; refusing to replace a non-empty cache")
     write_cache("writeups.json", posts)
     return posts
 

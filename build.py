@@ -1,10 +1,10 @@
-"""Sync GitHub content, then render the Flask site to static files in dist/ for Vercel.
+"""Sync GitHub content, then render the Flask site to static files in dist/.
 
     python build.py            sync from GitHub first
     python build.py --offline  use data/cache as is (also PORTFOLIO_OFFLINE=1)
 
 Set SITE_BASE=/portfolio to build for a subpath (GitHub Pages project site).
-Leave it unset for a root deploy (Vercel, custom domain).
+Leave it unset, or set it to /, for a root deploy (custom domain).
 """
 import os
 import shutil
