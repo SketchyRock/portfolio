@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Port 135 | Enzo Hins{% endblock %}
+{% block description %}An incident report.{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+{% block content %}
+<header class="page-head">
+    <h1>Port 135</h1>
+    <p class="lede">You found the incident report.</p>
+</header>
+<p>During a competition, a teammate asked Gemini how to fix Active Directory DNS on a Windows server. It told him to find the process on port 135 and kill it. That process was RPCSS. Windows restarted on the spot, and half our network went down with it.</p>
+<figure class="egg">
+    <img src="{{ url_for('static', filename='img/port-135.png') }}" width="545" height="113" alt="Gemini's reply: That was my fault. Killing the PID associated with port 135 killed svchost.exe (RPCSS), which is a protected Windows core service that causes an immediate safety restart (CRITICAL_PROCESS_DIED).">
+    <figcaption class="quiet">The apology, after the fact.</figcaption>
+</figure>
+<p><a href="{{ url_for('home') }}">Back to the home page</a></p>
+{% endblock %}

@@ -207,3 +207,8 @@ figcaption { font-size: 0.8125rem; color: var(--muted); margin-top: 0.25rem; }
 @media (prefers-reduced-motion: no-preference) {
   a, .btn { transition: color 120ms ease, border-color 120ms ease, text-decoration-color 120ms ease; }
 }
+
+/* easter egg */
+.egg { margin: 2rem 0; }
+.egg img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 4px; }
+.egg figcaption { margin-top: 0.5rem; }

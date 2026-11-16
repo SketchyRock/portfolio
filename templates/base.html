@@ -14,6 +14,7 @@
     <meta property="og:type" content="website">
     <link rel="preload" href="{{ url_for('static', filename='fonts/geist-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    {% block head %}{% endblock %}
 </head>
 <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -40,5 +41,17 @@
         <p class="footer-links"><a href="mailto:hinsenzo15@gmail.com">Email</a><a href="https://github.com/SketchyRock" rel="noopener">GitHub</a><a href="https://www.linkedin.com/in/enzohins/" rel="noopener">LinkedIn</a><a href="https://github.com/SketchyRock/portfolio" rel="noopener">Source on GitHub</a></p>
         </div>
     </footer>
+    <script>
+    (function () {
+        var word = "taskkill", typed = "";
+        document.addEventListener("keydown", function (e) {
+            if (e.ctrlKey || e.metaKey || e.altKey || e.key.length !== 1) return;
+            var t = e.target;
+            if (t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName))) return;
+            typed = (typed + e.key.toLowerCase()).slice(-word.length);
+            if (typed === word) location.href = "{{ url_for('port_135') }}";
+        });
+    })();
+    </script>
 </body>
 </html>

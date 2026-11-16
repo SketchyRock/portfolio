@@ -105,3 +105,11 @@ def test_photos_grouping(monkeypatch):
     assert albums[0]["slug"] == "trip-one" and len(albums[0]["photos"]) == 2
     assert albums[0]["photos"][0]["src"] == "/static/photos/a-800.webp"
     assert len(flat) == 3
+
+
+def test_port_135_page_hidden_from_nav():
+    client = appmod.app.test_client()
+    html = client.get("/port-135").get_data(as_text=True)
+    assert "RPCSS" in html and "img/port-135.png" in html and 'content="noindex"' in html
+    home = client.get("/").get_data(as_text=True)
+    assert 'href="/port-135"' not in home and '"taskkill"' in home
